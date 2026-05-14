@@ -14,7 +14,7 @@ body {
 */
 
 #Header {
-    /*background:linear-gradient(0.25turn,#e68e29, #ef8f21);*/
+    background:linear-gradient(0.5turn,#0000008e, #00000000);
     line-height: 10px;
     z-index:99;
     margin-bottom:0px;
@@ -22,10 +22,17 @@ body {
     transition: all 0.5s linear;
 }
 
-.backgroundHeader {
-    background-color: white;
-    transition: background-color 1s linear;
-    height:90px;
+#Header.backgroundHeader {
+    /* We can stack 3 layers: a white fade, your dark shadow, and the image */
+    background: 
+        linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.95)), /* Adds a 60% white fade */
+        linear-gradient(0.5turn, #0000008e, #00000000), /* Keeps your menu shadow */
+        url('Ressources/Background.webp');
+        
+    background-size: cover;
+    background-position: center;
+    transition: background 1s linear;
+    height: 90px;
 }
 
 .sticky {
@@ -56,6 +63,8 @@ body {
     background-color: white;
     margin:20px;
     opacity: 1;
+
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
 .Menu_Selections {
@@ -79,10 +88,37 @@ body {
     border-radius: 10px;
     background-color: #dc841f;
     opacity: 1;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 
     animation-name: button_fade;
     animation-duration: 4s;
     animation-iteration-count: infinite;
+}
+
+.Menu_Selections a {
+    text-decoration: none;
+    user-select: none;
+    color:black;
+    opacity: 1;
+}
+
+.Menu_Selections:hover {
+    border-radius: 10px;
+    background-color: #dc841f;
+    opacity: 1;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+
+    animation-name: button_fade;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
+
+.Menu_Selections:hover a {
+    color: white;
+}
+
+.highlight_name {
+    color: #FFA737;
 }
 
 @keyframes button_fade {
@@ -116,27 +152,45 @@ body {
 
 #Welcome_Page {
     height: 600px;
-    background-color: rgb(209, 205, 205);
+    /* Add your image path here */
+    background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+        url("Ressources/Sawara_Chiba.png");
+    
+    background-size: cover;     
+    background-position: center;
+    background-repeat: no-repeat;
     margin-top:-30px;
 }
 
 #Title {
-    font-size: 50px;
+    font-size: 30px;
+    font-weight:bold;
+    color:white;
     margin:30px;
-    padding-top:100px;
+    padding-top:160px;
 }
 
 #Name {
     margin:32px;
     font-size:25px;
+    font-weight: bold;
     margin-top:-10px;
+    color: white;
+}
+
+#Funny_Sentence {
+    margin:32px;
+    font-size:20px;
+    margin-top:-20px;
+    color: white;
 }
 
 #typing-anim {
-    width: 12ch;
-    animation: typing 1s steps(12), blink .5s step-end infinite alternate;
+    width: max-content;
+    min-height: 1.2em;
+    animation: blink .5s step-end infinite alternate;
     white-space: nowrap;
-    overflow: hidden;
     border-right: 3px solid;
     font-family: 'Source Code Pro', monospace;
     font-size: 3em;
@@ -147,6 +201,10 @@ body {
     background-color: #FFA737;
 }
 
+/* Keep the blinking cursor animation */
+@keyframes blink {
+   50% {border-color: transparent;}
+}
 @keyframes typing {
     from {width: 0;}
 }
@@ -154,9 +212,338 @@ body {
 @keyframes reverseTyping {
     from {width: var(--message-current-length);}
 }
-      
-@keyframes blink {
-   50% {border-color: transparent;}
+
+#About_Me {
+    margin:32px;
+    font-size:25px;
+    font-weight: bold;
+    margin-top:50px;
+}
+
+#About_Me_Paragraph {
+    margin:32px;
+    font-size:20px;
+    margin-top:-10px;
+    margin-bottom: 50px;
+}
+
+#Projects_Section {
+    height: auto;
+    padding-bottom: 80px;
+    background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), 
+              url('Ressources/Background_2.webp');
+    background-size: cover;
+    padding-top:30px;
+}
+
+#Project_Title {
+    margin:32px;
+    font-size:25px;
+    font-weight: bold;
+    color: white;
+}
+
+.Project_Tile {
+    display: flex;
+    align-items: center; /* Centers items vertically */
+    justify-content: space-between;
+    gap: 30px; /* Space between text and images */
+    margin:32px;
+    padding: 20px;
+    background-color: #f9f9f9; /* Optional: sets it apart from the background */
+    border-radius: 15px;
+    margin-bottom: 40px;
+    transition: transform 0.5s ease-in-out;
+}
+
+.Project_Tile:hover {
+    transform: scale(1.05);
+}
+
+.Project_Tile_Title {
+    font-size:20px;
+}
+
+.Project_Text {
+    flex: 1; /* Takes up 50% of the space */
+}
+
+/* Carousel Layout */
+.Project_Carousel {
+    flex: 1; 
+    position: relative;
+    overflow: hidden; 
+    border-radius: 10px;
+    aspect-ratio: 16 / 9; 
+    background-color: #222; 
+}
+
+.Carousel_Track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    transition: transform 0.5s ease-in-out; /* Smooth sliding animation */
+}
+
+.Carousel_Track img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    flex-shrink: 0; /* Prevents flexbox from crushing the images */
+}
+
+/* Navigation Dots Styling */
+.Carousel_Dots {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.Carousel_Youtube {
+    width: 100%;
+    height: 100%;
+    border: none;
+    flex-shrink: 0; /* Prevents the iframe from being squished */
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.dot.active {
+    background-color: #FFA737; /* Uses your Orange Peel color! */
+}
+
+/* Responsive Design: Stack for mobile screens */
+@media (max-width: 768px) {
+    .Project_Tile {
+        flex-direction: column;
+        flex-flow: column-reverse; /* Puts the image on top of the text on mobile */
+    }
+    .Project_Carousel {
+        width: 100%;
+    }
+}
+
+/* Container to keep the buttons spaced out and responsive */
+.Project_Links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* Base styling for all links */
+.Link_Btn {
+    text-decoration: none; /* Removes the underline */
+    padding: 8px 16px;
+    border-radius: 20px; /* Makes them pill-shaped */
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    font-family: Arial, sans-serif; /* Keeps the text clean */
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+/* Hover Animation: Slight jump and brightness boost */
+.Link_Btn:hover {
+    transform: translateY(-3px); 
+    filter: brightness(1.15);
+}
+
+.Btn_Text {
+    position: relative;
+    
+    /* Positive numbers push it down, negative numbers pull it up */
+    top: -3px;
+    left: 8px;
+
+    padding-right: 12px;
+}
+
+/* Brand Colors for each specific button */
+.GitHub_Btn {
+    background-color: #24292e; /* GitHub Dark Gray */
+}
+
+.Play_Btn {
+    background-color: #01875f; /* Google Play Green */
+}
+
+.Apple_Btn {
+    background-color: #007aff; /* Apple Blue */
+}
+
+.YouTube_Btn {
+    background-color: #ff0000; /* YouTube Red */
+}
+
+.Btn_Icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+/* --- Modal (Lightbox) Styling --- */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; 
+    z-index: 1000; /* Super high z-index to sit on top of your sticky header! */
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0, 0, 0, 0.9); /* Dark background */
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease; /* Smooth fade in */
+}
+
+/* Class added by JavaScript to show the modal */
+.modal.show {
+    display: flex; /* Flexbox perfectly centers the image */
+    opacity: 1;
+}
+
+/* The actual image inside the popup */
+.modal_content {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.8);
+}
+
+/* The 'X' Close Button */
+.close_modal {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+/* Hover effect for the 'X' button using your brand color */
+.close_modal:hover,
+.close_modal:focus {
+    color: #FFA737; 
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* --- Contacts Section Styling --- */
+#Contacts {
+    padding: 60px 20px;
+    text-align: center; /* Centers the title, sentence, and buttons */
+    background-color: white; /* Keeps it clean below the dark projects section */
+}
+
+#Contact_Title {
+    font-size: 30px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+#Contact_Sentence {
+    font-size: 18px;
+    color: #555;
+    max-width: 600px;
+    margin: 0 auto 30px auto; /* Centers the paragraph and adds bottom space */
+    line-height: 1.5;
+}
+
+/* Flexbox container to put buttons in a single centered row */
+.Contact_Links_Row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Allows buttons to drop to the next line on small phone screens */
+    gap: 15px;
+}
+
+/* --- BOXY CONTACT BUTTONS --- */
+/* This specifically targets only the buttons inside the Connect With Me section */
+.Contact_Links_Row .Link_Btn {
+    padding: 14px 28px; 
+    border-radius: 6px; /* Boxy corners */
+    font-size: 16px; 
+    gap: 12px; 
+    
+    /* Optional: Adds that cool 3D hardware button look! */
+    border-bottom: 4px solid rgba(0, 0, 0, 0.2); 
+}
+
+/* Adjusts only the icons in the Connect With Me section */
+.Contact_Links_Row .Btn_Icon {
+    width: 24px;  
+    height: 24px; 
+}
+
+/* --- New Button Brand Colors --- */
+/* (GitHub and YouTube are already defined in your CSS from earlier!) */
+
+.LinkedIn_Btn {
+    background-color: #0077b5; 
+}
+
+.Email_Btn {
+    background-color: #ea4335; /* Google/Gmail Red */
+}
+
+.Resume_Btn {
+    background-color: #FFA737; /* Using your custom Orange Peel brand color! */
+}
+
+/* --- Footer Styling --- */
+footer {
+    background: 
+        linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.95)), /* Adds a 60% white fade */
+        linear-gradient(0.5turn, #0000008e, #00000000), /* Keeps your menu shadow */
+        url('Ressources/Background.webp');
+    color: #f1f1f1; /* Light gray text so it isn't blindingly white */
+    padding: 40px 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    
+    /* Pushes the footer down slightly so it doesn't touch your contacts section */
+    margin-top: 40px; 
+}
+
+.footer_content p {
+    margin: 0;
+    font-size: 14px;
+    letter-spacing: 1px; /* Spreads the letters out slightly for a modern look */
+}
+
+/* Back to Top Link */
+.back_to_top {
+    display: inline-block;
+    margin-top: 15px;
+    color: #FFA737; /* Your custom Orange Peel brand color! */
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.back_to_top:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+    transform: translateY(-2px); /* Gives it a tiny hop when hovered */
 }
 
 /*
