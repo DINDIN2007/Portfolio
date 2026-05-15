@@ -45,14 +45,17 @@
       </div>
     </div>
     <div id="Name">I'm <span class="highlight_name">Dinh</span>. 👋</div>
-    <div id="Funny_Sentence">I teach electrons how to dance 🕺 and occasionally call myself an aspiring Electrical Engineer.</div>
+    <div id="Funny_Sentence">An aspiring Electrical Engineer armed with duct tape, hope and dreams, as well as a PhD in <i>'why is it making that noise' ?</i></div>
   </div>
 
   <!--About Me-->
   <h3 id="About_Me">About Me</h3>
 
   <p id="About_Me_Paragraph">
-    I'm a electrical engineering UWaterloo student venturing into the world of Hardware Electronics and am passionate about bringing solutions born from creativity combined with the magic of modern devices. 
+    I'm currently a first year electrical engineering UWaterloo student venturing into the world of Hardware Design.
+    My passion revolves around bringing impactful solutions born from creativity and the magic of modern technology.
+    To achieve this, I've been and am actively seeking to refine my skills from architecting digital logic in chip design to building scalable, user-facing applications.
+    My hobbies include disecting old electronics, messing around with system ricing and automation scripts on my linux computer, and mixed martial arts.
   </p>
 
   <!--Projects-->
@@ -62,27 +65,18 @@
     <div class="Project_Tile">
       <div class="Project_Text">
         <h4 class="Project_Tile_Title">Blystwatch 🕒</h4>
-        <p>This is a demo board to showcase development with both the BlystL15 (based on the nrf54L15) and the IOComposer AI from I-Syst.inc. </p>
+        <p>
+          Blyswatch is one of the first PCB I've designed from scratch and serves as a demo board to showcase development with both the BLYSTL15 (based on the Nordic Semiconductor's nrf54L15) along with the firmware IOComposer AI from I-Syst.inc. 
+          The design includes 6-axis motion LSM6DSV16X, nPM1304 Power Management IC, TMP117 temperature sensor, MAX30102 pulse oximeter and heart-rate sensor, SSD1306 OLED screen and an Ambient Light Sensor bundled in a low-cost 2 layer PCB.
+          It comes along with a dock that seemlessly connects to its exposed copper pads for charging and firmware upload (using a JTag Cortex Debugger).
+          I am currently in the process of ordering the parts for manual assembly and designing its 3d case in Solidworks.
+        </p>
         
         <div class="Project_Links">
           <a href="https://github.com/DINDIN2007/Blystwatch" target="_blank" class="Link_Btn GitHub_Btn">
             <img src="Ressources/github-logo.png" alt="GitHub" class="Btn_Icon">
             <span class="Btn_Text">GitHub</span>
           </a>
-
-          <!--
-          <a href="#" target="_blank" class="Link_Btn Play_Btn">
-            <img src="Ressources/playstore-logo.png" alt="Google Play" class="Btn_Icon"> Google Play
-          </a>
-
-          <a href="#" target="_blank" class="Link_Btn Apple_Btn">
-            <img src="Ressources/apple-logo.png" alt="App Store" class="Btn_Icon"> App Store
-          </a>
-
-          <a href="#" target="_blank" class="Link_Btn YouTube_Btn">
-            <img src="Ressources/youtube-logo.png" alt="YouTube" class="Btn_Icon"> YouTube
-          </a>
-          -->
         </div>
 
       </div>
@@ -102,6 +96,7 @@
       </div>
     </div>
 
+    <!--
     <div class="Project_Tile">
       <div class="Project_Text">
         <h4 class="Project_Tile_Title">HD3SS3220RNHR USB-C 1-to-2 Mux Breakout board</h4>
@@ -112,20 +107,6 @@
             <img src="Ressources/github-logo.png" alt="GitHub" class="Btn_Icon">
             <span class="Btn_Text">GitHub</span>
           </a>
-
-          <!--
-          <a href="#" target="_blank" class="Link_Btn Play_Btn">
-            <img src="Ressources/playstore-logo.png" alt="Google Play" class="Btn_Icon"> Google Play
-          </a>
-
-          <a href="#" target="_blank" class="Link_Btn Apple_Btn">
-            <img src="Ressources/apple-logo.png" alt="App Store" class="Btn_Icon"> App Store
-          </a>
-
-          <a href="#" target="_blank" class="Link_Btn YouTube_Btn">
-            <img src="Ressources/youtube-logo.png" alt="YouTube" class="Btn_Icon"> YouTube
-          </a>
-          -->
         </div>
 
       </div>
@@ -138,11 +119,15 @@
         <div class="Carousel_Dots"></div>
       </div>
     </div>
+    -->
 
     <div class="Project_Tile">
       <div class="Project_Text">
         <h4 class="Project_Tile_Title">BlueIO832-Mini App Bundle</h4>
-        <p>Your project description goes here...</p>
+        <p>The BlueIO832-Mini is a Bluetooth Low Energy microcontrollers based on Nordic Semiconductor's nrf52832 SoC. 
+          It is aimed to provide a intuitive learning experience similar to the Arduino, but with a lower entry level that doesn't require to know on how to code.<br><br>
+          I was fortunate to be able to write the four mobile applications that pair with this microcontroller, and serve as the medium to configure the board's pin functions. 
+        </p>
         
         <div class="Project_Links">
           <a href="https://play.google.com/store/apps/developer?id=I-SYST+inc" target="_blank" class="Link_Btn Play_Btn">
@@ -184,27 +169,18 @@
     <div class="Project_Tile">
       <div class="Project_Text">
         <h4 class="Project_Tile_Title">Mai</h4>
-        <p>Your project description goes here...</p>
+        <p>
+          Coming soon on both iOS and Google Play, Mai is an mobile application that takes period tracking one step further from the others menstrual apps.
+          Along with its light predictive engine, Mai pairs with the Blystpad, a smart bluetooth heatpad, in order to help reduce period cramps.
+          Mai notifies the user about their upcoming menstruation dates and to use the Blystpad based on the increasingly accurate period predictions based on past user data.
+          To keep the app lightweight, the predictive engine uses a simple K-NN machine learning algorithm paired with a Exponential Moving Average fallback mechanism that dynamically adjusts based on historical user data deviations.
+        </p>
         
         <div class="Project_Links">
-          <a href="https://github.com/DINDIN2007/Thinkerers-Desktop-Bar/tree/main/showcase_screenshots" target="_blank" class="Link_Btn GitHub_Btn">
+          <!--<a href="https://github.com/DINDIN2007/Thinkerers-Desktop-Bar/tree/main/showcase_screenshots" target="_blank" class="Link_Btn GitHub_Btn">
             <img src="Ressources/github-logo.png" alt="GitHub" class="Btn_Icon">
             <span class="Btn_Text">GitHub</span>
-          </a>
-
-          <!--
-          <a href="#" target="_blank" class="Link_Btn Play_Btn">
-            <img src="Ressources/playstore-logo.png" alt="Google Play" class="Btn_Icon"> Google Play
-          </a>
-
-          <a href="#" target="_blank" class="Link_Btn Apple_Btn">
-            <img src="Ressources/apple-logo.png" alt="App Store" class="Btn_Icon"> App Store
-          </a>
-
-          <a href="#" target="_blank" class="Link_Btn YouTube_Btn">
-            <img src="Ressources/youtube-logo.png" alt="YouTube" class="Btn_Icon"> YouTube
-          </a>
-          -->
+          </a>-->
         </div>
 
       </div>
@@ -224,27 +200,17 @@
     <div class="Project_Tile">
       <div class="Project_Text">
         <h4 class="Project_Tile_Title">Thinkerers Desktop Bar</h4>
-        <p>Your project description goes here...</p>
+        <p>
+          This was a hobby project with the sole purpose of boosting my daily productivity while keeping my desktop user-interface aesthetically pleasing on Arch Linux.
+          By combining Hyprland (a Tiling Window Manager) and Quickshell, I was able to create a personal desktop environment as minimal as possible while still retaining the core essential functions.
+          Along with this setup, I've written various bash scripts linked with Hyprland to pull up my essential applications (Discord, Slack and Notion) as a special workspace, automatically update my packages using Pacman, and display the computer's system activity statistics.
+        </p>
         
         <div class="Project_Links">
           <a href="https://github.com/DINDIN2007/Thinkerers-Desktop-Bar/tree/main/showcase_screenshots" target="_blank" class="Link_Btn GitHub_Btn">
             <img src="Ressources/github-logo.png" alt="GitHub" class="Btn_Icon">
             <span class="Btn_Text">GitHub</span>
           </a>
-
-          <!--
-          <a href="#" target="_blank" class="Link_Btn Play_Btn">
-            <img src="Ressources/playstore-logo.png" alt="Google Play" class="Btn_Icon"> Google Play
-          </a>
-
-          <a href="#" target="_blank" class="Link_Btn Apple_Btn">
-            <img src="Ressources/apple-logo.png" alt="App Store" class="Btn_Icon"> App Store
-          </a>
-
-          <a href="#" target="_blank" class="Link_Btn YouTube_Btn">
-            <img src="Ressources/youtube-logo.png" alt="YouTube" class="Btn_Icon"> YouTube
-          </a>
-          -->
         </div>
 
       </div>
@@ -266,27 +232,17 @@
 
       <div class="Project_Text">
         <h4 class="Project_Tile_Title">Continental Buffet</h4>
-        <p>Your project description goes here...</p>
+        <p>
+          As part of the final assignment in my grade 12 computer science class, we were given the full liberty of creating our own C++ project.
+          Along with 2 classmates, I've learned to build a video game that leveraged the Axmol Game Engine (a fork from Cocos2d-x).
+          Through Continental Buffet, I was able to combine my understanding of Object Orienting Programming with efficient JSON data handling to deliver a game that introduces you to various dishes across the world.
+        </p>
         
         <div class="Project_Links">
           <a href="https://github.com/DINDIN2007/Blystwatch" target="_blank" class="Link_Btn GitHub_Btn">
             <img src="Ressources/github-logo.png" alt="GitHub" class="Btn_Icon">
             <span class="Btn_Text">GitHub</span>
           </a>
-
-          <!--
-          <a href="#" target="_blank" class="Link_Btn Play_Btn">
-            <img src="Ressources/playstore-logo.png" alt="Google Play" class="Btn_Icon"> Google Play
-          </a>
-
-          <a href="#" target="_blank" class="Link_Btn Apple_Btn">
-            <img src="Ressources/apple-logo.png" alt="App Store" class="Btn_Icon"> App Store
-          </a>
-
-          <a href="#" target="_blank" class="Link_Btn YouTube_Btn">
-            <img src="Ressources/youtube-logo.png" alt="YouTube" class="Btn_Icon"> YouTube
-          </a>
-          -->
         </div>
 
       </div>
@@ -322,7 +278,7 @@
     <h3 id="Contact_Title">Connect With Me</h3>
     
     <p id="Contact_Sentence">
-      Whether you want to discuss embedded systems, collaborate on a new app, or just chat about the latest in tech, my inbox is always open!
+      Whether you want to discuss electronic design, collaborate on a new app, or just chat about the latest in tech, my inbox is always open!
     </p>
 
     <div class="Contact_Links_Row">
