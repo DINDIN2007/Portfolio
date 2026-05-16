@@ -126,7 +126,8 @@
         <h4 class="Project_Tile_Title">BlueIO832-Mini App Bundle</h4>
         <p>The BlueIO832-Mini is a Bluetooth Low Energy microcontrollers based on Nordic Semiconductor's nrf52832 SoC. 
           It is aimed to provide a intuitive learning experience similar to the Arduino, but with a lower entry level that doesn't require to know on how to code.<br><br>
-          I was fortunate to be able to write the four mobile applications that pair with this microcontroller, and serve as the medium to configure the board's pin functions. 
+          I was fortunate to be able to write the four mobile applications that pair with this microcontroller and that serve as the medium to configure the board's pin functions.
+          Each of these four apps allow the user to effortlessly interface with this external hardware, configure communication protocols, and monitor sensor data without ever  needing to write a single line of embedded firmware.
         </p>
         
         <div class="Project_Links">
@@ -229,7 +230,50 @@
     </div>
 
     <div class="Project_Tile">
+      <div class="Project_Text">
+        <h4 class="Project_Tile_Title">ANC System at a Distance</h4>
+        <p>
+          At the end of my first term of university, we were given the chance to create our own projects with the purpose of solving a real world issue that affected a large percentage of the patients in hospitals.
+          That problem was Hospital Induced Delirium, a severe state of confusion and cognitive impairment that could cause devastating consequences such as memory loss and hallucinations.
+          From going through various research papers, our team narrowed down one of the major causes of this condition, that being the excessive noise levels in modern hospitals.
+          As such, by combining a Raspberry Pi as our main computing unit, two microphones to serve as reference and error adjustment and a speaker, we were able to make a prototype of our solution within the short span of a month.
+          We've learn to leverage the MATLAB audio toolbox along with the RPi Support Package to create an automatic calibration system and a continuous noise cancellation loop that works at long distances.
+          However, with the limited time and material in hand, our device was highly susceptable to noise and reduce the noise by less than 3 dB.
+        </p>
+        
+        <div class="Project_Links">
+          <a href="https://github.com/Ron12777/198" target="_blank" class="Link_Btn GitHub_Btn">
+            <img src="Ressources/github-logo.png" alt="GitHub" class="Btn_Icon">
+            <span class="Btn_Text">GitHub</span>
+          </a>
+        </div>
 
+      </div>
+
+      <div class="Project_Carousel">
+        <div class="Carousel_Track">
+          <img src="Ressources/ANC_1.png">
+          <img src="Ressources/ANC_2.png">
+          <img src="Ressources/ANC_3.png">
+          <img src="Ressources/ANC_4.png">
+          <img src="Ressources/ANC_5.png">
+          <img src="Ressources/ANC_6.png">
+          <iframe 
+            class="Carousel_Youtube"
+            src="https://www.youtube.com/embed/DmECbFWfYMw?enablejsapi=1&mute=1&rel=0" 
+            title="ANC System at a Distance Demo" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" 
+            allowfullscreen>
+          </iframe>
+        </div>
+        
+        <div class="Carousel_Dots"></div>
+      </div>
+    </div>
+
+    <div class="Project_Tile">
       <div class="Project_Text">
         <h4 class="Project_Tile_Title">Continental Buffet</h4>
         <p>
@@ -275,7 +319,7 @@
   </div>
 
   <div id="Contacts">
-    <h3 id="Contact_Title">Connect With Me</h3>
+    <h3 id="Contact_Title">Connect With Me 😁</h3>
     
     <p id="Contact_Sentence">
       Whether you want to discuss electronic design, collaborate on a new app, or just chat about the latest in tech, my inbox is always open!
