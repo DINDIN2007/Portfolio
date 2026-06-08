@@ -8,10 +8,10 @@
   <link href="style.css" rel="stylesheet" type="text/css"/>
   <link href="Ressources/Main Account.gif" rel="icon" type="image/x-icon"/>
   <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@1,300&display=swap" rel="stylesheet">
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 </head>
 
 <body>
-  <!--Navigation Bar-->
   <div id="Header" class="backgroundHeader">
     <img id="Profil_Picture" src="Ressources/Main Account.gif"/>
     <table><tr>
@@ -21,23 +21,12 @@
       <td class="Menu_Selections">
         <a href="#Project_Title">Projects</a>
       </td>
-      <!--
-      <td class="Menu_Selections">
-        <a href="#SkillsAndExperience">Skills and Experience</a>
-      </td>
-      -->
       <td class="Menu_Selections">
         <a href="#Contacts">Connect</a>
       </td>
-      <!--
-      <td class="Menu_Selections">
-        <a href="#More">More</a>
-      </td>
-      -->
-    </tr></table>
+      </tr></table>
   </div>
 
-  <!--Title Page-->
   <div id="Welcome_Page">
     <div id="Title">
       <div id="typing-anim">
@@ -48,7 +37,6 @@
     <div id="Funny_Sentence">An aspiring Electrical Engineer armed with duct tape, hope and dreams, as well as a PhD in <i>'why is it making that noise' ?</i></div>
   </div>
 
-  <!--About Me-->
   <h3 id="About_Me">About Me</h3>
 
   <p id="About_Me_Paragraph">
@@ -58,7 +46,6 @@
     My hobbies include disecting old electronics, messing around with system ricing and automation scripts on my linux computer, and mixed martial arts.
   </p>
 
-  <!--Projects-->
   <div id="Projects_Section">
     <h3 id="Project_Title">Projects</h3>
 
@@ -82,44 +69,61 @@
       </div>
 
       <div class="Project_Carousel">
-        <div class="Carousel_Track">
-          <img src="Ressources/Blystwatch_3d_Model_Front.png">
-          <img src="Ressources/Blystwatch_3d_Model_Back.png">
-          <img src="Ressources/Blystwatch_Watch_PCB.png">
-          <img src="Ressources/Blystwatch_Main_Schematic.png">
-          <img src="Ressources/Blystwatch_Power_Schematic.png"> 
-          <img src="Ressources/Blystwatch_Sensors_Schematic.png">
-          <img src="Ressources/Blystwatch_Other_Schematic.png">
+        <div class="Carousel_Viewport">
+          <div class="Carousel_Track">
+            <model-viewer 
+              alt="Blystwatch Dock 3D Model"
+              src="Ressources/BLYSTWATCH_With_Components.glb" 
+              ar
+              shadow-intensity="0" 
+              environment-image="neutral"
+              exposure="0.8"
+              tone-mapping="neutral"
+              camera-controls 
+              touch-action="pan-y">
+            </model-viewer>
+            
+            <model-viewer 
+              alt="Blystwatch 3D Model"
+              src="Ressources/BLYSTWATCH.glb" 
+              ar
+              shadow-intensity="0" 
+              environment-image="neutral"
+              exposure="0.8"
+              tone-mapping="neutral"
+              camera-controls 
+              touch-action="pan-y">
+            </model-viewer>
+
+            <model-viewer 
+              alt="Blystwatch Dock 3D Model"
+              src="Ressources/BLYSTWATCH_Dock.glb" 
+              ar
+              shadow-intensity="0" 
+              environment-image="neutral"
+              exposure="0.8"
+              tone-mapping="neutral"
+              camera-controls 
+              touch-action="pan-y">
+            </model-viewer>
+
+            <img src="Ressources/Blystwatch_3d_Model_Front.png">
+            <img src="Ressources/Blystwatch_3d_Model_Back.png">
+            <img src="Ressources/Blystwatch_Watch_PCB.png">
+            <img src="Ressources/Blystwatch_Main_Schematic.png">
+            <img src="Ressources/Blystwatch_Power_Schematic.png"> 
+            <img src="Ressources/Blystwatch_Sensors_Schematic.png">
+            <img src="Ressources/Blystwatch_Other_Schematic.png">
+          </div>
         </div>
         
-        <div class="Carousel_Dots"></div>
+        <div class="Carousel_Controls">
+          <button class="Carousel_Btn Prev_Btn">&#10094;</button>
+          <div class="Carousel_Dots"></div>
+          <button class="Carousel_Btn Next_Btn">&#10095;</button>
+        </div>
       </div>
     </div>
-
-    <!--
-    <div class="Project_Tile">
-      <div class="Project_Text">
-        <h4 class="Project_Tile_Title">HD3SS3220RNHR USB-C 1-to-2 Mux Breakout board</h4>
-        <p>Your project description goes here...</p>
-        
-        <div class="Project_Links">
-          <a href="https://github.com/DINDIN2007/Blystwatch" target="_blank" class="Link_Btn GitHub_Btn">
-            <img src="Ressources/github-logo.png" alt="GitHub" class="Btn_Icon">
-            <span class="Btn_Text">GitHub</span>
-          </a>
-        </div>
-
-      </div>
-
-      <div class="Project_Carousel">
-        <div class="Carousel_Track">
-          <img src="Ressources/Blystwatch_3d_Model_Front.png">
-        </div>
-        
-        <div class="Carousel_Dots"></div>
-      </div>
-    </div>
-    -->
 
     <div class="Project_Tile">
       <div class="Project_Text">
@@ -136,34 +140,38 @@
             <span class="Btn_Text">Google Play</span>
           </a>
           
-          
           <a href="https://apps.apple.com/us/developer/i-syst/id1588443075" target="_blank" class="Link_Btn Apple_Btn">
             <img src="Ressources/apple-logo.png" alt="App Store" class="Btn_Icon">
             <span class="Btn_Text">iOS Store</span>
           </a>
         </div>
-
       </div>
 
       <div class="Project_Carousel">
-        <div class="Carousel_Track">
-          <iframe 
-            class="Carousel_Youtube"
-            src="https://www.youtube.com/embed/hfrfdkg6Rws?enablejsapi=1&mute=1&rel=0" 
-            title="BlueIO App Demo" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            referrerpolicy="strict-origin-when-cross-origin" 
-            allowfullscreen>
-          </iframe>
+        <div class="Carousel_Viewport">
+          <div class="Carousel_Track">
+            <iframe 
+              class="Carousel_Youtube"
+              src="https://www.youtube.com/embed/hfrfdkg6Rws?enablejsapi=1&mute=1&rel=0" 
+              title="BlueIO App Demo" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              referrerpolicy="strict-origin-when-cross-origin" 
+              allowfullscreen>
+            </iframe>
 
-          <img src="Ressources/BlueIO_1.png">
-          <img src="Ressources/BlueIO_2.png">
-          <img src="Ressources/BlueIO_3.png">
-          <img src="Ressources/BlueIO_4.png">
+            <img src="Ressources/BlueIO_1.png">
+            <img src="Ressources/BlueIO_2.png">
+            <img src="Ressources/BlueIO_3.png">
+            <img src="Ressources/BlueIO_4.png">
+          </div>
         </div>
-        
-        <div class="Carousel_Dots"></div>
+
+        <div class="Carousel_Controls">
+          <button class="Carousel_Btn Prev_Btn">&#10094;</button>
+          <div class="Carousel_Dots"></div>
+          <button class="Carousel_Btn Next_Btn">&#10095;</button>
+        </div>
       </div>
     </div>
 
@@ -176,25 +184,23 @@
           Mai notifies the user about their upcoming menstruation dates and to use the Blystpad based on the increasingly accurate period predictions based on past user data.
           To keep the app lightweight, the predictive engine uses a simple K-NN machine learning algorithm paired with a Exponential Moving Average fallback mechanism that dynamically adjusts based on historical user data deviations.
         </p>
-        
-        <div class="Project_Links">
-          <!--<a href="https://github.com/DINDIN2007/Thinkerers-Desktop-Bar/tree/main/showcase_screenshots" target="_blank" class="Link_Btn GitHub_Btn">
-            <img src="Ressources/github-logo.png" alt="GitHub" class="Btn_Icon">
-            <span class="Btn_Text">GitHub</span>
-          </a>-->
-        </div>
-
       </div>
 
       <div class="Project_Carousel">
-        <div class="Carousel_Track">
-          <img src="Ressources/Mai_1.png">
-          <img src="Ressources/Mai_2.png">
-          <img src="Ressources/Mai_3.png">
-          <img src="Ressources/Mai_4.png">
+        <div class="Carousel_Viewport">
+          <div class="Carousel_Track">
+            <img src="Ressources/Mai_1.png">
+            <img src="Ressources/Mai_2.png">
+            <img src="Ressources/Mai_3.png">
+            <img src="Ressources/Mai_4.png">
+          </div>
         </div>
-        
-        <div class="Carousel_Dots"></div>
+
+        <div class="Carousel_Controls">
+          <button class="Carousel_Btn Prev_Btn">&#10094;</button>
+          <div class="Carousel_Dots"></div>
+          <button class="Carousel_Btn Next_Btn">&#10095;</button>
+        </div>
       </div>
     </div>
 
@@ -213,19 +219,24 @@
             <span class="Btn_Text">GitHub</span>
           </a>
         </div>
-
       </div>
 
       <div class="Project_Carousel">
-        <div class="Carousel_Track">
-          <img src="Ressources/Thinkerer_1.png">
-          <img src="Ressources/Thinkerer_3.png">
-          <img src="Ressources/Thinkerer_4.png">
-          <img src="Ressources/Thinkerer_5.png">
-          <img src="Ressources/Thinkerer_6.png">
+        <div class="Carousel_Viewport">
+          <div class="Carousel_Track">
+            <img src="Ressources/Thinkerer_1.png">
+            <img src="Ressources/Thinkerer_3.png">
+            <img src="Ressources/Thinkerer_4.png">
+            <img src="Ressources/Thinkerer_5.png">
+            <img src="Ressources/Thinkerer_6.png">
+          </div>
         </div>
-        
-        <div class="Carousel_Dots"></div>
+
+        <div class="Carousel_Controls">
+          <button class="Carousel_Btn Prev_Btn">&#10094;</button>
+          <div class="Carousel_Dots"></div>
+          <button class="Carousel_Btn Next_Btn">&#10095;</button>
+        </div>
       </div>
     </div>
 
@@ -247,29 +258,34 @@
             <span class="Btn_Text">GitHub</span>
           </a>
         </div>
-
       </div>
 
       <div class="Project_Carousel">
-        <div class="Carousel_Track">
-          <img src="Ressources/ANC_1.png">
-          <img src="Ressources/ANC_2.png">
-          <img src="Ressources/ANC_3.png">
-          <img src="Ressources/ANC_4.png">
-          <img src="Ressources/ANC_5.png">
-          <img src="Ressources/ANC_6.png">
-          <iframe 
-            class="Carousel_Youtube"
-            src="https://www.youtube.com/embed/DmECbFWfYMw?enablejsapi=1&mute=1&rel=0" 
-            title="ANC System at a Distance Demo" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            referrerpolicy="strict-origin-when-cross-origin" 
-            allowfullscreen>
-          </iframe>
+        <div class="Carousel_Viewport">
+          <div class="Carousel_Track">
+            <img src="Ressources/ANC_1.png">
+            <img src="Ressources/ANC_2.png">
+            <img src="Ressources/ANC_3.png">
+            <img src="Ressources/ANC_4.png">
+            <img src="Ressources/ANC_5.png">
+            <img src="Ressources/ANC_6.png">
+            <iframe 
+              class="Carousel_Youtube"
+              src="https://www.youtube.com/embed/DmECbFWfYMw?enablejsapi=1&mute=1&rel=0" 
+              title="ANC System at a Distance Demo" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              referrerpolicy="strict-origin-when-cross-origin" 
+              allowfullscreen>
+            </iframe>
+          </div>
         </div>
-        
-        <div class="Carousel_Dots"></div>
+
+        <div class="Carousel_Controls">
+          <button class="Carousel_Btn Prev_Btn">&#10094;</button>
+          <div class="Carousel_Dots"></div>
+          <button class="Carousel_Btn Next_Btn">&#10095;</button>
+        </div>
       </div>
     </div>
 
@@ -288,30 +304,29 @@
             <span class="Btn_Text">GitHub</span>
           </a>
         </div>
-
       </div>
 
       <div class="Project_Carousel">
-        <div class="Carousel_Track">
-          <img src="Ressources/Continental_1.png">
-          <img src="Ressources/Continental_2.png">
-          <img src="Ressources/Continental_3.png">
-          <img src="Ressources/Continental_3.png">
-          <img src="Ressources/Continental_4.png"> 
-          <img src="Ressources/Continental_5.png">
+        <div class="Carousel_Viewport">
+          <div class="Carousel_Track">
+            <img src="Ressources/Continental_1.png">
+            <img src="Ressources/Continental_2.png">
+            <img src="Ressources/Continental_3.png">
+            <img src="Ressources/Continental_3.png">
+            <img src="Ressources/Continental_4.png"> 
+            <img src="Ressources/Continental_5.png">
+          </div>
         </div>
-        
-        <div class="Carousel_Dots"></div>
+
+        <div class="Carousel_Controls">
+          <button class="Carousel_Btn Prev_Btn">&#10094;</button>
+          <div class="Carousel_Dots"></div>
+          <button class="Carousel_Btn Next_Btn">&#10095;</button>
+        </div>
       </div>
     </div>
 
-    <!--
-    <div class="Project_Tile">
-      <h4 class="Project_Tile_Title">Finite Runner</h4>
-    </div>
-  -->
   </div>
-
 
   <div id="Image_Modal" class="modal">
     <span class="close_modal">&times;</span>
@@ -341,17 +356,11 @@
         <span class="Btn_Text">GitHub</span>
       </a>
 
-      <a href="#" target="_blank" class="Link_Btn Resume_Btn">
+      <a href="/Ressources/Full_Resume_for_Simplify.pdf" target="_blank" class="Link_Btn Resume_Btn">
         <img src="Ressources/resume-logo.png" alt="Resume" class="Btn_Icon">
         <span class="Btn_Text">Resume</span>
       </a>
 
-      <!--
-      <a href="#" target="_blank" class="Link_Btn YouTube_Btn">
-        <img src="Ressources/youtube-logo.png" alt="YouTube" class="Btn_Icon">
-        <span class="Btn_Text">YouTube</span>
-      </a>
-      -->
     </div>
   </div>
 
@@ -363,7 +372,6 @@
     </div>
   </footer>
 
-  <!--Link to JS File-->
   <script src="script.js"></script>
 </body>
 

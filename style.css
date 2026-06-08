@@ -269,58 +269,84 @@ body {
 }
 
 /* Carousel Layout */
+/* Carousel Layout */
 .Project_Carousel {
     flex: 1; 
+    display: flex;
+    flex-direction: column; /* Stacks the viewport and controls vertically */
+    background-color: transparent; 
+}
+
+.Carousel_Viewport {
     position: relative;
     overflow: hidden; 
     border-radius: 10px;
     aspect-ratio: 16 / 9; 
     background-color: #222; 
+    width: 100%;
 }
 
 .Carousel_Track {
     display: flex;
     width: 100%;
     height: 100%;
-    cursor: pointer;
-    transition: transform 0.5s ease-in-out; /* Smooth sliding animation */
+    transition: transform 0.5s ease-in-out; 
 }
 
-.Carousel_Track img {
+/* Forces images, iframes, and model-viewers to behave uniformly */
+.Carousel_Track > * {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    flex-shrink: 0; /* Prevents flexbox from crushing the images */
+    flex-shrink: 0; 
+    border: none;
+    background-color: transparent; 
 }
 
-/* Navigation Dots Styling */
+/* Navigation Controls (Below the Viewport) */
+.Carousel_Controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px; /* Creates spacing between the model and the buttons */
+}
+
+.Carousel_Btn {
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.Carousel_Btn:hover {
+    background-color: #FFA737;
+    transform: scale(1.1);
+}
+
 .Carousel_Dots {
-    position: absolute;
-    bottom: 10px;
-    width: 100%;
     display: flex;
     justify-content: center;
     gap: 8px;
 }
 
-.Carousel_Youtube {
-    width: 100%;
-    height: 100%;
-    border: none;
-    flex-shrink: 0; /* Prevents the iframe from being squished */
-}
-
 .dot {
-    width: 10px;
-    height: 10px;
-    background-color: rgba(255, 255, 255, 0.5);
+    width: 12px;
+    height: 12px;
+    background-color: #ccc;
     border-radius: 50%;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 .dot.active {
-    background-color: #FFA737; /* Uses your Orange Peel color! */
+    background-color: #FFA737; 
+    transform: scale(1.2);
 }
 
 /* Responsive Design: Stack for mobile screens */
@@ -554,3 +580,9 @@ COLOR PALETTE
 - Drab dark brown : 45462A
 - Jet : 343330
 */
+
+model-viewer {
+  width: 100%;
+  height: 400px; /* Change this to whatever height fits your page */
+  background-color: #f0f0f0; /* Optional: helps you see where the viewer is while debugging */
+}
