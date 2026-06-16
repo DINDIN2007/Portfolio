@@ -1,27 +1,28 @@
 var typingClass = document.getElementById("typing-anim");
-var message = ["Hello World!", "Greetings...", "Good ", "Hola ¿Qué tal?", "Xin Chào", "こんにちは世界"]; // Added Japanese phrase
+var message = ["Hello World!", "Greetings",// "Good ", 
+                "01001000 01101001", "Hola ¿Qué tal?", ".... ..", "Xin Chào!", "こんにちは世界"]; // Added Japanese phrase
 var messageIndex = 0;
 var charIndex = 0;
 var isDeleting = false;
 
 // Find what time of the day
-function findHour() {
-    let currentHour = (new Date()).getHours();
+// function findHour() {
+//     let currentHour = (new Date()).getHours();
     
-    // Morning 5 am to 12 pm (noon)
-    if (currentHour >= 5 && currentHour < 12) message[2] = "Good Morning🌅 ";
-    // Afternoon 12 pm to 5 pm.
-    else if (currentHour >= 12 && currentHour < 17) message[2] = "Good Afternoon☀️ ";
-    // Evening 5 pm to 9 pm.
-    else if (currentHour >= 17 && currentHour < 9) message[2] = "Good Evening🌄 ";
-    // Night 9 pm to 4 am.
-    else message[2] = "Good Night 🛏️ ";
-}
+//     // Morning 5 am to 12 pm (noon)
+//     if (currentHour >= 5 && currentHour < 12) message[2] = "Good Morning🌅 ";
+//     // Afternoon 12 pm to 5 pm.
+//     else if (currentHour >= 12 && currentHour < 17) message[2] = "Good Afternoon☀️ ";
+//     // Evening 5 pm to 9 pm.
+//     else if (currentHour >= 17 && currentHour < 9) message[2] = "Good Evening🌄 ";
+//     // Night 9 pm to 4 am.
+//     else message[2] = "Good Night 🛏️ ";
+// }
 
 function typeEffect() {
     // Check the time right before typing the "Good..." greeting
     if (messageIndex === 2 && charIndex === 0 && !isDeleting) {
-        findHour();
+        // findHour();
     }
 
     // Using [...string] splits emojis and Japanese chars correctly into single array items

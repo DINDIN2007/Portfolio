@@ -33,7 +33,8 @@
         tone-mapping="neutral"
         camera-controls 
         touch-action="pan-y"
-        auto-rotate>
+        auto-rotate
+        camera-orbit="0deg 10deg auto">
       </model-viewer>
     </div>
 
@@ -57,7 +58,7 @@
     
     <div class="About_Me_Text">
       <h3 id="About_Me">About Me</h3>
-      <p id="About_Me_Paragraph">
+      <p onselectstart="return false;" unselectable="on" id="About_Me_Paragraph">
         I'm currently a first year electrical engineering UWaterloo student venturing into the world of Hardware Design.
         My passion revolves around bringing impactful solutions born from creativity and the magic of modern technology.
         To achieve this, I've been and am actively seeking to refine my skills from architecting digital logic in chip design to building scalable, user-facing applications.
@@ -72,32 +73,39 @@
     <div class="Project_Tile">
       <div class="Project_Text">
         <h4 class="Project_Tile_Title">Blystwatch</h4>
-        <p>
-          Blystwatch is one of the first PCBs I've designed from scratch and serves as a demo board to showcase development with both the BLYSTL15 (based on the Nordic Semiconductor's nrf54L15) along with the firmware IOComposer AI from I-Syst.inc. 
-          The design includes a 6-axis motion LSM6DSV16X, nPM1304 Power Management IC, TMP117 temperature sensor, MAX30102 pulse oximeter and heart-rate sensor, SSD1306 OLED screen and an Ambient Light Sensor bundled in a low-cost 2-layer PCB.
-          It comes along with a dock that seamlessly connects to its exposed copper pads for charging and firmware upload (using a JTag Cortex Debugger).
-          I am currently in the process of ordering the parts for manual assembly and designing its 3D case in Solidworks.
+        <p onselectstart="return false;" unselectable="on">
+          Blystwatch is one of the <b>first PCBs</b> I've designed completely from scratch, built as a demo board to show off real firmware development on <b>Nordic's nRF54L15</b> (via the BLYST L15 module) running I-Syst's IOComposer AI. 
+          What started as a fairly standard sensor board turned into a real lesson in power-system design: swapping in a single PMIC to replace separate charging and regulator chips, designing a custom 6-pin dock so the watch never needs an exposed USB-C port or debug header, and learning the hard way why every active IC needs its own local decoupling cap instead of relying on one big one. 
+          <br><br>
+          The part I'm proudest of is catching a battery-killing bug before it ever reached a board house: a wake pin on the power-management IC was directly tied to a GPIO on the SoC, which would have silently bled the battery dry through a parasitic leakage path the moment the watch went into ship mode. 
+          Hunting that down, understanding exactly why Nordic's own hardware guidelines warn against it, and re-wiring the fix myself taught me more about real power-rail design than any sensor integration on the board did. 
+          It's a small, low-cost 2-layer board, but it's the project where I stopped just placing parts and started actually understanding the power and signal paths underneath them.
         </p>
         <div class="Project_Links">
           <a href="https://github.com/DINDIN2007/Blystwatch" target="_blank" class="Link_Btn GitHub_Btn">
             <img src="Ressources/github-logo.png" alt="GitHub" class="Btn_Icon">
             <span class="Btn_Text">GitHub</span>
           </a>
+
+          <button class="Link_Btn Resume_Btn Open_Text_Modal_Btn" data-target="blystwatch-modal">
+            <img src="Ressources/resume-logo.png" alt="Report" class="Btn_Icon">
+            <span class="Btn_Text">More Details</span>
+          </button>
         </div>
       </div>
       <div class="Project_Carousel">
         <div class="Carousel_Viewport">
           <div class="Carousel_Track">
-            <model-viewer src="Ressources/BLYSTWATCH_With_Components.glb" ar shadow-intensity="0" environment-image="neutral" exposure="0.8" tone-mapping="neutral" camera-controls touch-action="pan-y"></model-viewer>
-            <model-viewer src="Ressources/BLYSTWATCH.glb" ar shadow-intensity="0" environment-image="neutral" exposure="0.8" tone-mapping="neutral" camera-controls touch-action="pan-y"></model-viewer>
-            <model-viewer src="Ressources/BLYSTWATCH_Dock.glb" ar shadow-intensity="0" environment-image="neutral" exposure="0.8" tone-mapping="neutral" camera-controls touch-action="pan-y"></model-viewer>
-            <img src="Ressources/Blystwatch_3d_Model_Front.png">
-            <img src="Ressources/Blystwatch_3d_Model_Back.png">
+            <model-viewer src="Ressources/BLYSTWATCH_With_Components.glb" ar shadow-intensity="0" environment-image="neutral" exposure="0.6" tone-mapping="neutral" camera-controls touch-action="pan-y" camera-orbit="0deg 10deg auto"></model-viewer>></model-viewer>
+            <model-viewer src="Ressources/BLYSTWATCH.glb" ar shadow-intensity="0" environment-image="neutral" exposure="0.5" tone-mapping="neutral" camera-controls touch-action="pan-y" camera-orbit="0deg 0deg auto"></model-viewer>></model-viewer>
+            <model-viewer src="Ressources/BLYSTWATCH_Dock.glb" ar shadow-intensity="0" environment-image="neutral" exposure="0.5" tone-mapping="neutral" camera-controls touch-action="pan-y" camera-orbit="0deg 0deg auto"></model-viewer>></model-viewer>
             <img src="Ressources/Blystwatch_Watch_PCB.png">
             <img src="Ressources/Blystwatch_Main_Schematic.png">
             <img src="Ressources/Blystwatch_Power_Schematic.png"> 
             <img src="Ressources/Blystwatch_Sensors_Schematic.png">
             <img src="Ressources/Blystwatch_Other_Schematic.png">
+            <img src="Ressources/Blystwatch_3d_Model_Front.png">
+            <img src="Ressources/Blystwatch_3d_Model_Back.png">
           </div>
         </div>
         <div class="Carousel_Controls">
@@ -111,10 +119,13 @@
     <div class="Project_Tile">
       <div class="Project_Text">
         <h4 class="Project_Tile_Title">SuperSpeed USB-C Multiplexer (HD3SS3220)</h4>
-        <p>
-          This is a project designed to bridge the gap between our FPGA board and modern USB-C devices, offering a great look into how the devices we interact with daily actually work under the hood! A high-speed PCB bridging a Type-C 3.0 connector with the TI <b>HD3SS3220 MUX</b> to a corresponding Type-A connector. Designing this board required navigating strict impedance controls, signal integrity preservation, and complex power topologies.
+        <p onselectstart="return false;" unselectable="on">
+          I designed a USB-C to USB-A SuperSpeed bridge adapter to solve a genuinely annoying problem on my own bench: every modern laptop we own has gone USB-C only, while half my design team's FPGA dev boards still debug over USB-A. 
+          Rather than buying a generic dongle and hoping it doesn't bottleneck our 5Gbps signals, I built my own around TI's HD3SS3220 analog mux, and treated it as a real signal-integrity exercise rather than a quick hack. 
           <br><br>
-          I successfully implemented the <b>5W differential spacing rule</b>, constrained via stubs to <b>&lt; 15mils</b>, and resolved significant DC bias derating challenges by transitioning bulk capacitance to Tantalum Polymer packages. 
+          What I'm most proud of isn't the first schematic, it's the second and third one. 
+          A round of honest design review caught real mistakes I'd made: a missing decoupling cap on the mux itself, an LED wired so it would never actually light up, AC-coupling capacitors doubled up in a way that would have quietly halved my high-speed coupling capacitance and degraded the SuperSpeed link. 
+          Chasing those down, rereading the datasheet line by line, and re-deriving things like wetting current and open-drain pull-up math from first principles taught me more about practical high-speed PCB design than any of my coursework did, and turned a small adapter board into one of the project I learned the most from this year.
         </p>
         <div class="Project_Links">
           <a href="https://github.com/uwrealitylabs/HD3SS3220-breakout" target="_blank" class="Link_Btn GitHub_Btn">
@@ -133,7 +144,7 @@
       <div class="Project_Carousel">
         <div class="Carousel_Viewport">
           <div class="Carousel_Track">
-            <model-viewer src="Ressources/USB_3d_Model.glb" ar shadow-intensity="0" environment-image="neutral" exposure="0.8" tone-mapping="neutral" camera-controls touch-action="pan-y"></model-viewer>
+            <model-viewer src="Ressources/USB_3d_Model.glb" ar shadow-intensity="0" environment-image="neutral" exposure="0.5" tone-mapping="neutral" camera-controls touch-action="pan-y" camera-orbit="90deg 10deg auto"></model-viewer>></model-viewer>
             <img src="Ressources/PCB_Model_HD3SS3220.png" alt="MUX PCB Design"> 
             <img src="Ressources/HD3SS320_Schematic.png" alt="MUX PCB Design"> 
             <img src="Ressources/PCB_Routing_HD3SS3220.png" alt="MUX PCB Design"> 
@@ -151,7 +162,7 @@
     <div class="Project_Tile">
       <div class="Project_Text">
         <h4 class="Project_Tile_Title">ANC System at a Distance</h4>
-        <p>
+        <p onselectstart="return false;" unselectable="on">
           At the end of my first term of university, we were given the chance to create our own projects with the purpose of solving a real-world issue that affected a large percentage of patients in hospitals.
           That problem was Hospital Induced Delirium, a severe state of confusion and cognitive impairment that could cause devastating consequences such as memory loss and hallucinations.
           From going through various research papers, our team narrowed down one of the major causes of this condition, that being excessive noise levels.
@@ -190,7 +201,7 @@
     <div class="Project_Tile">
       <div class="Project_Text">
         <h4 class="Project_Tile_Title">BlueIO832-Mini App Bundle</h4>
-        <p>
+        <p onselectstart="return false;" unselectable="on">
           The BlueIO832-Mini is a Bluetooth Low Energy microcontroller based on Nordic Semiconductor's nrf52832 SoC. 
           It is aimed to provide an intuitive learning experience similar to the Arduino, but with a lower entry level that doesn't require knowing how to code.<br><br>
           I was fortunate to be able to write the four mobile applications that pair with this microcontroller and serve as the medium to configure the board's pin functions.
@@ -228,7 +239,7 @@
     <div class="Project_Tile">
       <div class="Project_Text">
         <h4 class="Project_Tile_Title">Mai</h4>
-        <p>
+        <p onselectstart="return false;" unselectable="on">
           Coming soon on both iOS and Google Play, Mai is a mobile application that takes period tracking one step further than other menstrual apps.
           Along with its light predictive engine, Mai pairs with the Blystpad, a smart bluetooth heatpad, in order to help reduce period cramps.
           Mai notifies the user about their upcoming menstruation dates and reminds them to use the Blystpad based on increasingly accurate period predictions from past user data.
@@ -255,7 +266,7 @@
     <div class="Project_Tile">
       <div class="Project_Text">
         <h4 class="Project_Tile_Title">Thinkerers Desktop Bar</h4>
-        <p>
+        <p onselectstart="return false;" unselectable="on">
           This was a hobby project with the sole purpose of boosting my daily productivity while keeping my desktop user-interface aesthetically pleasing on desktop <b>Linux</b>.
           By combining Hyprland (a Tiling Window Manager) and Quickshell, I was able to create a personal desktop environment as minimal as possible while still retaining the core essential functions.
           Along with this setup, I've written various <b>Bash Scripts</b> linked with Hyprland to pull up my essential applications (Discord, Slack, and Notion) as a special workspace, automatically update my packages using Pacman, and display the computer's system activity statistics.
@@ -288,7 +299,7 @@
     <div class="Project_Tile">
       <div class="Project_Text">
         <h4 class="Project_Tile_Title">Continental Buffet</h4>
-        <p>
+        <p onselectstart="return false;" unselectable="on">
           As part of the final assignment in my grade 12 computer science class, we were given the full liberty of creating our own C++ project.
           Along with 2 classmates, I learned to build a video game that leveraged the Axmol Game Engine (a fork from Cocos2d-x).
           Through Continental Buffet, I was able to combine my understanding of Object-Oriented Programming with efficient JSON data handling to deliver a game that introduces you to various dishes across the world.
@@ -327,38 +338,37 @@
     <div class="text_modal_content">
       <span class="close_text_modal">&times;</span>
       
-      <div id="mux-modal" class="modal_text_body">
-        <h2>Hardware Debugging & Constraint Fixes</h2>
-        <p>A breakdown of the critical design constraints and schematic fixes implemented during the routing of the HD3SS3220 MUX and ME6228 LDO.</p>
+      <div id="mux-modal" class="modal_text_body" style="display: none;">
+        <div class="usb-adapter-tech-details">
+          <img src="Ressources/USB_BOM.png" alt="HD3SS3220 USB-C to USB-A breakout board" class="mux-board-photo"/>
+          
+          <h2>USB Adapter - Hardware Architecture</h2>
+          <ul>
+            <li><strong>Architecture:</strong> 4-layer stackup (signal / GND / power / signal), ~29&nbsp;&times;&nbsp;53mm board. USB 3.1 Gen1 SuperSpeed bridge from a USB-C receptacle to a USB-A receptacle through a TI <strong>HD3SS3220RNHR</strong> analog mux.</li>
+            <li><strong>High-speed routing:</strong> Differential pairs routed at a <strong>0.162mm (~6.4mil)</strong> trace width with a <strong>0.18mm (~7mil)</strong> intra-pair gap to hold differential impedance. Length matching kept intrapair-only (TX+ vs TX&minus;, RX+ vs RX&minus;), with serpentine compensation placed close to escape mismatches.</li>
+            <li><strong>ESD protection:</strong> <strong>TPD2EUSB30</strong> and <strong>TPD4EUSB30</strong> arrays placed immediately at the USB-C and USB-A connectors respectively, with flow-through routing to keep stub length minimal.</li>
+            <li><strong>AC-coupling fix:</strong> Caught a double-AC-coupling error in an earlier revision that would have halved effective coupling capacitance (100nF&nbsp;&rarr;&nbsp;~50nF) and degraded the SuperSpeed link. Corrected the topology to a single set of 100nF caps on the TX1/TX2 pairs only, at the Type-C side.</li>
+            <li><strong>Power &amp; decoupling:</strong> Local <strong>100nF + 10&micro;F</strong> decoupling at the mux's VCC33/VDD5 pins, plus a <strong>100&micro;F</strong> bulk cap on the VCONN-capable VBUS rail. Regulated by an <strong>HT7533-1</strong> 3.3V SOT-89 LDO.</li>
+            <li><strong>Indicator-circuit fixes:</strong> Separated the 900k&Omega; VBUS-detect path from a dedicated 1k&Omega; LED indicator path (~3mA). Re-derived the open-drain DIR-pin LED circuit (VCC33&nbsp;&rarr;&nbsp;LED&nbsp;&rarr;&nbsp;1k&Omega;&nbsp;&rarr;&nbsp;DIR) to sink ~1.5mA, within the pin's rated I<sub>OL</sub>.</li>
+            <li><strong>Configuration:</strong> Dual 10k&Omega; pull-ups with onboard DIP switches for ENn_MUX / ENn_CC configuration selection.</li>
+            <li><strong>Final layout:</strong> 34 placed components and 61 vias across the 4-layer stack.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="blystwatch-modal" class="modal_text_body" style="display: none;">
+        <img src="Ressources/BLYSTWATCH_BOM.png" alt="HD3SS3220 USB-C to USB-A breakout board" class="mux-board-photo"/>
         
-        <h3>1. High-Speed Trace Routing Constraints</h3>
-        <ul>
-          <li><b>Trace Length Matching:</b> Intrapair lengths matched (TX+ to TX-, RX+ to RX-) using serpentines within <b>0.25 inches</b> of the IC breakout. TX and RX pairs do not need to match each other.</li>
-          <li><b>Spacing (5W Rule):</b> Maintained spacing of 5x the trace width between HS signal pairs (e.g., <b>30 mils</b> for 6 mil traces).</li>
-          <li><b>Keep-Outs:</b> Kept <b>&gt;30 mils</b> away from generic signals, <b>&gt;50 mils</b> from clocks/oscillators, and <b>&gt;90 mils</b> from the edge of the GND reference plane. Kept <b>1.5W</b> away from plane voids.</li>
-          <li><b>Via Discontinuity:</b> Restricted via stubs to <b>&lt;15 mils</b> to prevent resonance. Back-drilling is required for any stubs exceeding this length.</li>
-        </ul>
+        <h2>Blystwatch - Hardware Architecture</h2>
+        <p>A breakdown of the component integration and design constraints for the custom Blystwatch PCB and charging dock.</p>
+          <ul>
+            <li><strong>Architecture:</strong> 2-layer PCB, ~45&nbsp;&times;&nbsp;45mm round form factor. A <strong>BLYST L15</strong> module (Nordic nRF54L15) and <strong>nPM1304</strong> PMIC drive a sensor/display suite: <strong>BMI323</strong> 6-axis IMU, <strong>TMP117</strong> temperature sensor, <strong>MAX30102</strong> pulse-ox/heart-rate sensor, <strong>OPT3001</strong> ambient light sensor, <strong>SSD1306</strong> 1.3" OLED, and a <strong>W25Q80E</strong> SPI flash. 47 placed components, 111 vias, 642 routed segments.</li>
+            <li><strong>Power architecture:</strong> Single nPM1304 buck rail (VOUT1), with output voltage set entirely over I2C &mdash; VSET pins left unconnected since the regulator is software-configured rather than resistor-strapped. Buck output filtered with a <strong>1.0&micro;H</strong> inductor and <strong>10&micro;F</strong> capacitor. Eight local <strong>0.1&micro;F</strong> decoupling caps placed at the VDD pin of every active IC.</li>
+            <li><strong>I2C bus &amp; debounce:</strong> <strong>4.7k&Omega;</strong> pull-ups (R4, R5) balancing signal edge speed against power draw at 100/400kHz bus speeds. Three physical buttons debounced with <strong>10nF</strong> RC filters against the SoC's internal pull-ups.</li>
+            <li><strong>Critical fix &mdash; SHPHLD isolation:</strong> Caught the PMIC's SHPHLD pin (internal 50k&Omega; pull-up to VBAT) directly wired to the SoC's P2.01 GPIO &mdash; a path that would leak current through the GPIO's internal ESD diodes and drain the battery in ship/hibernate mode, per Nordic's hardware design guidelines. Resolved by isolating the SoC's control line from the PMIC's wake pin through a series Schottky diode instead of a direct tie, leaving the module's native P2.01 alternate function unconnected in the final routing.</li>
+            <li><strong>Charging &amp; firmware dock:</strong> Custom 6-pin dock-pad footprint replaces a separate USB-C connector and Cortex Debug header, combining battery charging and SWD firmware upload into one connection. An <strong>SP0502</strong> TVS diode array protects the dock-facing lines from ESD.</li>
+          </ul>
 
-        <h3>2. Signal Integrity & AC Coupling</h3>
-        <ul>
-          <li><b>AC Capacitors:</b> Used 0402 packages symmetrically placed on TX lines <b>ONLY</b> (100nF). Removed redundant RX caps, as the HD3SS3220 utilizes adaptive common-mode voltage tracking (0V - 2V).</li>
-          <li><b>GND Voiding:</b> Voided the GND reference plane by <b>60%</b> directly beneath the SMD pads of the AC caps (spanning at least 2 layers deep) to balance capacitive and inductive discontinuities.</li>
-          <li><b>ESD Protection:</b> Placed flow-through routing diodes immediately at the connector, eliminating sharp corners and tying the GND pin with large vias to handle high-current IEC strikes.</li>
-        </ul>
-
-        <h3>3. Power Topology & Decoupling</h3>
-        <ul>
-          <li><b>LDO (ME6228):</b> Used 1µF 0402 ceramic caps. Due to the severe DC bias derating of tiny 0402 packages under load, these were over-spec'd to a <b>10V/16V rating</b> to ensure they retained true 1µF capacitance. Thermal relief relied on wide copper polygon pours on the GND and VIN/VOUT pins.</li>
-          <li><b>MUX Decoupling:</b> Added local energy reservoirs (100nF) physically touching the VCC33 and VDD5 pins to combat parasitic inductance during rapid SuperSpeed switching transients.</li>
-          <li><b>100µF Bulk Capacitance:</b> Bypassed massive 1210/1812 MLCCs to avoid severe DC bias loss. Replaced with <b>Tantalum Polymer (EIA 1206/1210)</b> or Aluminum Electrolytics, which deliver a true 100µF under a 5V load without derating.</li>
-        </ul>
-
-        <h3>4. Logic & Indicator LED Corrections</h3>
-        <ul>
-          <li><b>Wetting Current:</b> Implemented <b>10kΩ</b> pull-up resistors on ENn_CC and ENn_MUX. This prevents the traces from acting as antennas for 5Gbps EMI noise, while providing just enough "wetting current" (<b>0.5mA</b> on 5V, <b>0.33mA</b> on 3.3V) to punch through oxidation on mechanical DIP switch contacts without wasting power.</li>
-          <li><b>VBUS LED Fix:</b> Separated the VBUS indicator from the <b>900kΩ</b> detection pin. A 900kΩ resistor restricts flow to 3.3µA, starving the LED. Created a parallel path pulling ~<b>3mA</b> through a <b>1kΩ</b> resistor to ground.</li>
-          <li><b>DIR Pin LED Fix:</b> The DIR pin is an <b>Open-Drain</b> output (sinks to ground, outputs no voltage). It is rated to sink roughly <b>1.6mA</b>. Wired the LED directly from the 3.3V rail through a <b>1kΩ resistor</b> into the DIR pin, allowing the chip to safely sink the current to ground when CC2 is detected.</li>
-        </ul>
       </div>
 
     </div>

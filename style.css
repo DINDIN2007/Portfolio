@@ -727,3 +727,12 @@ model-viewer {
 .modal_text_body li {
     margin-bottom: 12px;
 }
+
+.mux-board-photo {
+  display: block;
+  width: 100%;
+  max-width: 640px;
+  border: 1px solid #e8e8e8;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
