@@ -164,3 +164,39 @@ modal.addEventListener('click', function(e) {
         modal.classList.remove("show");
     }
 });
+
+/* ============================================================
+   5. TEXT MODAL (ENGINEERING REPORTS)
+============================================================ */
+
+const textModal = document.getElementById("Text_Modal");
+const closeTextBtn = document.querySelector(".close_text_modal");
+const openModalBtns = document.querySelectorAll(".Open_Text_Modal_Btn");
+
+// Open the modal when a "Read Engineering Report" button is clicked
+openModalBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+        // We use data-target in case you want to add multiple different reports later!
+        const targetId = btn.getAttribute("data-target");
+        
+        // Hide all reports first, then show the one requested
+        document.querySelectorAll(".modal_text_body").forEach(body => {
+            body.style.display = "none";
+        });
+        document.getElementById(targetId).style.display = "block";
+        
+        textModal.classList.add("show");
+    });
+});
+
+// Close via the ✕ button
+closeTextBtn.addEventListener("click", () => {
+    textModal.classList.remove("show");
+});
+
+// Close when clicking the dark backdrop outside the text box
+textModal.addEventListener("click", (e) => {
+    if (e.target === textModal) {
+        textModal.classList.remove("show");
+    }
+});

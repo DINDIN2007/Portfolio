@@ -1,116 +1,111 @@
-body {
-    margin:0px;
-    background-color: white;
-    height: 2000px;
-}
-
 /*
-██╗  ██╗███████╗ █████╗ ██████╗ ███████╗██████╗ 
-██║  ██║██╔════╝██╔══██╗██╔══██╗██╔════╝██╔══██╗
-███████║█████╗  ███████║██║  ██║█████╗  ██████╔╝
-██╔══██║██╔══╝  ██╔══██║██║  ██║██╔══╝  ██╔══██╗
-██║  ██║███████╗██║  ██║██████╔╝███████╗██║  ██║
-╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═════╝ ╚══════╝╚═╝  ╚═╝
+  style.css — Personal Portfolio
+  Color Palette:
+    Orange Peel  : #FFA737
+    Fulvous      : #DC851F
+    Field Drab   : #7E5920
+    Drab Brown   : #45462A
+    Jet          : #343330
 */
 
+/* ============================================================
+   GLOBAL RESET
+============================================================ */
+body {
+    margin: 0;
+    background-color: white;
+    font-family: Arial, sans-serif;
+    scroll-behavior: smooth;
+}
+
+html {
+    /* Tells the browser to stop 110px above the target section */
+    scroll-padding-top: 110px; 
+    scroll-behavior: smooth;
+}
+
+/* ============================================================
+   HEADER / NAVIGATION BAR
+============================================================ */
 #Header {
-    background:linear-gradient(0.5turn,#0000008e, #00000000);
-    line-height: 10px;
-    z-index:99;
-    margin-bottom:0px;
-    /*box-shadow: 0px 5px 5px 12px #e68e29;*/
-    transition: all 0.5s linear;
-}
-
-#Header.backgroundHeader {
-    /* We can stack 3 layers: a white fade, your dark shadow, and the image */
-    background: 
-        linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.95)), /* Adds a 60% white fade */
-        linear-gradient(0.5turn, #0000008e, #00000000), /* Keeps your menu shadow */
-        url('Ressources/Background.webp');
-        
-    background-size: cover;
-    background-position: center;
-    transition: background 1s linear;
-    height: 90px;
-}
-
-.sticky {
     position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
-    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 99;
+    padding: 0 20px;
+    height: 80px;
+    box-sizing: border-box;
+    /* Forces the header to stay transparent so the hero wallpaper touches the very top */
+    background: transparent !important; 
 }
 
-.sticky #Profil_Picture {
-    opacity:0;
-    transition: opacity 0.5s linear;
+/* The glassmorphism blur mask - applied permanently */
+#Header::before {
+    content: "";
+    position: absolute;
+    inset: 0; 
+    z-index: -1; 
+    
+    /* Starts exactly at 50% opacity black, fading perfectly to 0% */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+    
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    
+    /* Starts fading the blur immediately at the top edge for maximum smoothness */
+    mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, transparent 100%);
+}
+
+/* JavaScript adds the .sticky class when scrolling, which we use here to hide the profile pic */
+#Header.sticky #Profil_Picture {
+    opacity: 0;
+    pointer-events: none;
 }
 
 #Profil_Picture {
-    width:40px;
-    height:40px;
+    width: 40px;
+    height: 40px;
     border-radius: 20px;
     filter: brightness(0.9);
-    margin:20px;
+    transition: opacity 0.4s ease;
 }
 
-#Header table {
-    float: right;
-    border-collapse: collapse;
-    height:50px;
-    border-radius: 10px;
-    background-color: white;
-    margin:20px;
-    opacity: 1;
-
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+/* ============================================================
+   MODERN NAVIGATION MENU
+============================================================ */
+.Nav_Menu {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 6px;
+    gap: 8px;
+    background-color: rgba(44, 87, 119, 0.95);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .Menu_Selections {
-    transform: scale(1);
-    padding:0px 20px 0px 20px;
-    border-radius: 10px;
-
-    background-color: #dc841f00;
-    transition: 0.6s;
-    opacity: 1;
+    border-radius: 8px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 .Menu_Selections a {
+    display: block;
+    padding: 8px 16px;
     text-decoration: none;
-    user-select: none;
-    color:black;
-    opacity: 1;
+    color: #ffffff;
+    font-weight: 600;
+    transition: color 0.2s ease;
 }
 
 .Menu_Selections:hover {
-    border-radius: 10px;
-    background-color: #dc841f;
-    opacity: 1;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-
-    animation-name: button_fade;
-    animation-duration: 4s;
-    animation-iteration-count: infinite;
-}
-
-.Menu_Selections a {
-    text-decoration: none;
-    user-select: none;
-    color:black;
-    opacity: 1;
-}
-
-.Menu_Selections:hover {
-    border-radius: 10px;
-    background-color: #dc841f;
-    opacity: 1;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-
-    animation-name: button_fade;
-    animation-duration: 4s;
-    animation-iteration-count: infinite;
+    background-color: #FFA737;
+    transform: translateY(-2px);
 }
 
 .Menu_Selections:hover a {
@@ -121,79 +116,84 @@ body {
     color: #FFA737;
 }
 
-@keyframes button_fade {
-    0%   {
-        filter: brightness(1);
-        -webkit-filter: brightness(1);
-    }
-    50% {
-        filter: brightness(0.9);
-        -webkit-filter: brightness(0.9);
-    }
-    100%  {
-        filter: brightness(1);
-        -webkit-filter: brightness(1);
-    }
-}
-
-.Menu_Selections:active {
-    transform: scale(1.2);
-    transition: all 0.5s;
-}
-
-/*
-██╗  ██╗ █████╗ ███╗   ███╗███████╗  ██████╗  █████╗  ██████╗ ███████╗
-██║  ██║██╔══██╗████╗ ████║██╔════╝  ██╔══██╗██╔══██╗██╔════╝ ██╔════╝
-███████║██║  ██║██╔████╔██║█████╗    ██████╔╝███████║██║  ██╗ █████╗  
-██╔══██║██║  ██║██║╚██╔╝██║██╔══╝    ██╔═══╝ ██╔══██║██║  ╚██╗██╔══╝  
-██║  ██║╚█████╔╝██║ ╚═╝ ██║███████╗  ██║     ██║  ██║╚██████╔╝███████╗
-╚═╝  ╚═╝ ╚════╝ ╚═╝     ╚═╝╚══════╝  ╚═╝     ╚═╝  ╚═╝ ╚═════╝ ╚══════╝
-*/
-
+/* ============================================================
+   HERO / WELCOME PAGE (FLEXBOX LAYOUT)
+============================================================ */
 #Welcome_Page {
-    height: 600px;
-    /* Add your image path here */
-    background-image: 
-        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px; /* Slightly reduced so the larger model fits comfortably */
+    padding: 100px 5% 40px; /* Replaced negative margin with proper padding to clear header */
+    box-sizing: border-box; /* Prevents padding from adding to 100vh, causing scroll */
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
         url("Ressources/Sawara_Chiba.png");
-    
-    background-size: cover;     
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    margin-top:-30px;
+}
+
+/* Left side: 3D Model */
+.Hero_Model {
+    flex: 1.5; /* Tells flexbox to give the model more space than the text */
+    width: 100%;
+    max-width: 750px; /* Significantly larger */
+    height: 65vh; /* Scales beautifully with screen height */
+    min-height: 450px; /* Guaranteed minimum height so it never disappears */
+    animation: float 6s ease-in-out infinite;
+    display: block;
+}
+
+.Hero_Model model-viewer {
+    width: 100%;
+    height: 100%;
+    display: block; /* Forces model-viewer to respect the container bounds */
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Right side: Text Content */
+.Hero_Text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
 }
 
 #Title {
     font-size: 30px;
-    font-weight:bold;
-    color:white;
-    margin:30px;
-    padding-top:160px;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
 #Name {
-    margin:32px;
-    font-size:25px;
+    font-size: 25px;
     font-weight: bold;
-    margin-top:-10px;
-    color: white;
+    margin-bottom: 15px;
 }
 
 #Funny_Sentence {
-    margin:32px;
-    font-size:20px;
-    margin-top:-20px;
-    color: white;
+    font-size: 20px;
+    line-height: 1.4;
+    color: #eaeaea;
 }
 
 #typing-anim {
     width: max-content;
     min-height: 1.2em;
-    animation: blink .5s step-end infinite alternate;
     white-space: nowrap;
     border-right: 3px solid;
     font-family: 'Source Code Pro', monospace;
-    font-size: 3em;
+    /* clamp() smoothly scales text between 1.8rem and 2.5rem based on screen width */
+    font-size: clamp(1.8rem, 4vw, 2.5rem); 
+    animation: blink 0.5s step-end infinite alternate;
 }
 
 #typing-anim::selection {
@@ -201,88 +201,200 @@ body {
     background-color: #FFA737;
 }
 
-/* Keep the blinking cursor animation */
 @keyframes blink {
-   50% {border-color: transparent;}
-}
-@keyframes typing {
-    from {width: 0;}
+    50% { border-color: transparent; }
 }
 
-@keyframes reverseTyping {
-    from {width: var(--message-current-length);}
+/* ============================================================
+   RESPONSIVE MOBILE ADJUSTMENTS
+============================================================ */
+
+/* Standard Tablets and Large Phones */
+@media (max-width: 900px) {
+    #Welcome_Page {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 120px;
+        padding-bottom: 60px;
+        height: auto;
+    }
+    .Hero_Model {
+        flex: none;
+        width: 100%;
+        height: 50vh; 
+        min-height: 350px;
+        max-height: 500px;
+        margin-bottom: 20px; /* Breathing room between model and text */
+    }
+    #typing-anim {
+        margin: 0 auto;
+        font-size: clamp(1.5rem, 6vw, 2.5rem); /* Prevents "Hello World!" from blowing out the screen */
+    }
+}
+
+/* Extra-Small Phones (e.g., iPhone SE) */
+@media (max-width: 450px) {
+    /* Shrink the Navigation Bar */
+    .Nav_Menu {
+        padding: 4px;
+        gap: 2px;
+    }
+    .Menu_Selections a {
+        padding: 6px 8px;
+        font-size: 13px;
+    }
+    #Header {
+        padding: 0 10px; /* Less edge padding on tiny screens */
+    }
+    
+    /* Shrink the Hero Text */
+    .Hero_Text #Title {
+        font-size: 24px;
+    }
+    .Hero_Text #Name {
+        font-size: 20px;
+    }
+    .Hero_Text #Funny_Sentence {
+        font-size: 16px;
+    }
+}
+
+/* ============================================================
+   ABOUT ME SECTION
+============================================================ */
+#About_Me_Section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    margin: 80px 5% 60px; /* Top margin, side margins, bottom margin */
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Image Styling */
+.About_Me_Image_Container {
+    flex: 0 0 auto; /* Prevents the image from shrinking */
+}
+
+#About_Me_Image {
+    width: 100%;
+    max-width: 350px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    object-fit: cover;
+    aspect-ratio: 1 / 1; /* Keeps the image a perfect square. Remove this if you want a rectangle! */
+}
+
+/* Text Styling */
+.About_Me_Text {
+    flex: 1;
 }
 
 #About_Me {
-    margin:32px;
-    font-size:25px;
+    font-size: 32px;
     font-weight: bold;
-    margin-top:50px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #333;
 }
 
 #About_Me_Paragraph {
-    margin:32px;
-    font-size:20px;
-    margin-top:-10px;
-    margin-bottom: 50px;
+    font-size: 18px;
+    line-height: 1.7;
+    color: #444;
+    margin: 0;
 }
 
+/* ============================================================
+   RESPONSIVE MOBILE ADJUSTMENTS (ABOUT ME)
+============================================================ */
+
+/* Stack the image on top of the text on smaller screens */
+@media (max-width: 900px) {
+    #About_Me_Section {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+        margin: 60px 5% 40px;
+    }
+    
+    #About_Me_Image {
+        max-width: 250px; /* Slightly smaller image on mobile */
+    }
+}
+
+/* ============================================================
+   PROJECTS SECTION
+============================================================ */
 #Projects_Section {
     height: auto;
     padding-bottom: 80px;
-    background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), 
-              url('Ressources/Background_2.webp');
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)),
+        url('Ressources/Background_2.webp');
     background-size: cover;
-    padding-top:30px;
+    padding-top: 30px;
 }
 
-#Project_Title {
-    margin:32px;
-    font-size:25px;
+#Project_Title, .Project_Title {
+    margin: 32px 5%;
+    font-size: 28px;
     font-weight: bold;
     color: white;
 }
 
+/* Project Cards
+  NOTE: Removed the scale(1.05) transform to fix jankiness. 
+  It now relies on a subtle shadow on hover instead.
+*/
 .Project_Tile {
     display: flex;
-    align-items: center; /* Centers items vertically */
+    align-items: center;
     justify-content: space-between;
-    gap: 30px; /* Space between text and images */
-    margin:32px;
-    padding: 20px;
-    background-color: #f9f9f9; /* Optional: sets it apart from the background */
+    gap: 40px;
+    margin: 32px 5%;
+    padding: 35px;
+    background-color: #f9f9f9;
     border-radius: 15px;
     margin-bottom: 40px;
-    transition: transform 0.5s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: box-shadow 0.3s ease;
 }
 
 .Project_Tile:hover {
-    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
 .Project_Tile_Title {
-    font-size:20px;
+    font-size: 22px;
+    margin-top: 0;
+    color: #333;
 }
 
 .Project_Text {
-    flex: 1; /* Takes up 50% of the space */
+    flex: 1;
+    line-height: 1.5;
+    color: #555;
 }
 
-/* Carousel Layout */
-/* Carousel Layout */
+/* ============================================================
+   IMAGE CAROUSEL
+============================================================ */
 .Project_Carousel {
-    flex: 1; 
+    flex: 1;
     display: flex;
-    flex-direction: column; /* Stacks the viewport and controls vertically */
-    background-color: transparent; 
+    flex-direction: column;
+    background-color: transparent;
 }
 
 .Carousel_Viewport {
     position: relative;
-    overflow: hidden; 
+    overflow: hidden;
     border-radius: 10px;
-    aspect-ratio: 16 / 9; 
-    background-color: #222; 
+    aspect-ratio: 16 / 9;
+    background-color: #222;
     width: 100%;
 }
 
@@ -290,26 +402,24 @@ body {
     display: flex;
     width: 100%;
     height: 100%;
-    transition: transform 0.5s ease-in-out; 
+    transition: transform 0.5s ease-in-out;
 }
 
-/* Forces images, iframes, and model-viewers to behave uniformly */
 .Carousel_Track > * {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    flex-shrink: 0; 
+    flex-shrink: 0;
     border: none;
-    background-color: transparent; 
+    background-color: transparent;
 }
 
-/* Navigation Controls (Below the Viewport) */
 .Carousel_Controls {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 15px;
-    margin-top: 15px; /* Creates spacing between the model and the buttons */
+    margin-top: 15px;
 }
 
 .Carousel_Btn {
@@ -345,22 +455,23 @@ body {
 }
 
 .dot.active {
-    background-color: #FFA737; 
+    background-color: #FFA737;
     transform: scale(1.2);
 }
 
-/* Responsive Design: Stack for mobile screens */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .Project_Tile {
-        flex-direction: column;
-        flex-flow: column-reverse; /* Puts the image on top of the text on mobile */
+        flex-direction: column-reverse;
+        padding: 25px;
     }
     .Project_Carousel {
         width: 100%;
     }
 }
 
-/* Container to keep the buttons spaced out and responsive */
+/* ============================================================
+   BUTTONS
+============================================================ */
 .Project_Links {
     display: flex;
     flex-wrap: wrap;
@@ -368,49 +479,21 @@ body {
     margin-top: 20px;
 }
 
-/* Base styling for all links */
 .Link_Btn {
-    text-decoration: none; /* Removes the underline */
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
     padding: 8px 16px;
-    border-radius: 20px; /* Makes them pill-shaped */
+    border-radius: 20px;
     font-size: 14px;
     font-weight: bold;
     color: white;
-    font-family: Arial, sans-serif; /* Keeps the text clean */
     transition: transform 0.2s ease, filter 0.2s ease;
 }
 
-/* Hover Animation: Slight jump and brightness boost */
 .Link_Btn:hover {
-    transform: translateY(-3px); 
+    transform: translateY(-3px);
     filter: brightness(1.15);
-}
-
-.Btn_Text {
-    position: relative;
-    
-    /* Positive numbers push it down, negative numbers pull it up */
-    top: -3px;
-    left: 8px;
-
-    padding-right: 12px;
-}
-
-/* Brand Colors for each specific button */
-.GitHub_Btn {
-    background-color: #24292e; /* GitHub Dark Gray */
-}
-
-.Play_Btn {
-    background-color: #01875f; /* Google Play Green */
-}
-
-.Apple_Btn {
-    background-color: #007aff; /* Apple Blue */
-}
-
-.YouTube_Btn {
-    background-color: #ff0000; /* YouTube Red */
 }
 
 .Btn_Icon {
@@ -419,38 +502,52 @@ body {
     object-fit: contain;
 }
 
-/* --- Modal (Lightbox) Styling --- */
+.Btn_Text {
+    position: relative;
+    top: -1px;
+    left: 8px;
+    padding-right: 12px;
+}
+
+.GitHub_Btn   { background-color: #24292e; }
+.Play_Btn     { background-color: #01875f; }
+.Apple_Btn    { background-color: #007aff; }
+.YouTube_Btn  { background-color: #ff0000; }
+.LinkedIn_Btn { background-color: #0077b5; }
+.Email_Btn    { background-color: #ea4335; }
+.Resume_Btn   { background-color: #FFA737; }
+
+/* ============================================================
+   IMAGE LIGHTBOX / MODAL
+============================================================ */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; 
-    z-index: 1000; /* Super high z-index to sit on top of your sticky header! */
+    display: none;
+    position: fixed;
+    z-index: 1000;
     left: 0;
     top: 0;
-    width: 100%; 
-    height: 100%; 
-    background-color: rgba(0, 0, 0, 0.9); /* Dark background */
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
     align-items: center;
     justify-content: center;
     opacity: 0;
-    transition: opacity 0.3s ease; /* Smooth fade in */
+    transition: opacity 0.3s ease;
 }
 
-/* Class added by JavaScript to show the modal */
 .modal.show {
-    display: flex; /* Flexbox perfectly centers the image */
+    display: flex;
     opacity: 1;
 }
 
-/* The actual image inside the popup */
 .modal_content {
     max-width: 90%;
     max-height: 90%;
     object-fit: contain;
     border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.8);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
 }
 
-/* The 'X' Close Button */
 .close_modal {
     position: absolute;
     top: 20px;
@@ -458,24 +555,23 @@ body {
     color: #f1f1f1;
     font-size: 40px;
     font-weight: bold;
-    transition: 0.3s;
     cursor: pointer;
     z-index: 1001;
+    transition: color 0.3s;
 }
 
-/* Hover effect for the 'X' button using your brand color */
 .close_modal:hover,
 .close_modal:focus {
-    color: #FFA737; 
-    text-decoration: none;
-    cursor: pointer;
+    color: #FFA737;
 }
 
-/* --- Contacts Section Styling --- */
+/* ============================================================
+   CONTACTS SECTION
+============================================================ */
 #Contacts {
     padding: 60px 20px;
-    text-align: center; /* Centers the title, sentence, and buttons */
-    background-color: white; /* Keeps it clean below the dark projects section */
+    text-align: center;
+    background-color: white;
 }
 
 #Contact_Title {
@@ -489,77 +585,53 @@ body {
     font-size: 18px;
     color: #555;
     max-width: 600px;
-    margin: 0 auto 30px auto; /* Centers the paragraph and adds bottom space */
+    margin: 0 auto 30px auto;
     line-height: 1.5;
 }
 
-/* Flexbox container to put buttons in a single centered row */
 .Contact_Links_Row {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap; /* Allows buttons to drop to the next line on small phone screens */
+    flex-wrap: wrap;
     gap: 15px;
 }
 
-/* --- BOXY CONTACT BUTTONS --- */
-/* This specifically targets only the buttons inside the Connect With Me section */
 .Contact_Links_Row .Link_Btn {
-    padding: 14px 28px; 
-    border-radius: 6px; /* Boxy corners */
-    font-size: 16px; 
-    gap: 12px; 
-    
-    /* Optional: Adds that cool 3D hardware button look! */
-    border-bottom: 4px solid rgba(0, 0, 0, 0.2); 
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-size: 16px;
+    gap: 12px;
+    border-bottom: 4px solid rgba(0, 0, 0, 0.2);
 }
 
-/* Adjusts only the icons in the Connect With Me section */
 .Contact_Links_Row .Btn_Icon {
-    width: 24px;  
-    height: 24px; 
+    width: 24px;
+    height: 24px;
 }
 
-/* --- New Button Brand Colors --- */
-/* (GitHub and YouTube are already defined in your CSS from earlier!) */
-
-.LinkedIn_Btn {
-    background-color: #0077b5; 
-}
-
-.Email_Btn {
-    background-color: #ea4335; /* Google/Gmail Red */
-}
-
-.Resume_Btn {
-    background-color: #FFA737; /* Using your custom Orange Peel brand color! */
-}
-
-/* --- Footer Styling --- */
+/* ============================================================
+   FOOTER
+============================================================ */
 footer {
-    background: 
-        linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.95)), /* Adds a 60% white fade */
-        linear-gradient(0.5turn, #0000008e, #00000000), /* Keeps your menu shadow */
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.95)),
+        linear-gradient(0.5turn, #0000008e, #00000000),
         url('Ressources/Background.webp');
-    color: #f1f1f1; /* Light gray text so it isn't blindingly white */
+    color: #f1f1f1;
     padding: 40px 20px;
     text-align: center;
-    font-family: Arial, sans-serif;
-    
-    /* Pushes the footer down slightly so it doesn't touch your contacts section */
-    margin-top: 40px; 
 }
 
 .footer_content p {
     margin: 0;
     font-size: 14px;
-    letter-spacing: 1px; /* Spreads the letters out slightly for a modern look */
+    letter-spacing: 1px;
 }
 
-/* Back to Top Link */
 .back_to_top {
     display: inline-block;
     margin-top: 15px;
-    color: #FFA737; /* Your custom Orange Peel brand color! */
+    color: #FFA737;
     text-decoration: none;
     font-size: 14px;
     font-weight: bold;
@@ -569,20 +641,89 @@ footer {
 .back_to_top:hover {
     opacity: 0.8;
     text-decoration: underline;
-    transform: translateY(-2px); /* Gives it a tiny hop when hovered */
+    transform: translateY(-2px);
 }
 
-/*
-COLOR PALETTE
-- Orange Peel : FFA737
-- Fulvous : DC851F
-- Field Drab : 7E5920
-- Drab dark brown : 45462A
-- Jet : 343330
-*/
-
+/* ============================================================
+   MODEL VIEWER
+============================================================ */
 model-viewer {
-  width: 100%;
-  height: 400px; /* Change this to whatever height fits your page */
-  background-color: #f0f0f0; /* Optional: helps you see where the viewer is while debugging */
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+}
+
+/* ============================================================
+   TEXT / ENGINEERING REPORT MODAL
+============================================================ */
+.text_modal {
+    display: none;
+    position: fixed;
+    z-index: 2000; /* Needs to be higher than the header */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.text_modal.show {
+    display: flex;
+    opacity: 1;
+}
+
+.text_modal_content {
+    background-color: #f9f9f9;
+    width: 90%;
+    max-width: 800px;
+    max-height: 80vh;
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow-y: auto; /* Allows scrolling inside the popup */
+    color: #333;
+    line-height: 1.6;
+}
+
+.close_text_modal {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    color: #888;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.close_text_modal:hover {
+    color: #FFA737;
+}
+
+/* Typography inside the modal */
+.modal_text_body h2 {
+    margin-top: 0;
+    color: #2C5777; /* Matches your Nav Bar blue */
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 10px;
+}
+
+.modal_text_body h3 {
+    margin-top: 30px;
+    color: #FFA737;
+}
+
+.modal_text_body ul {
+    padding-left: 20px;
+}
+
+.modal_text_body li {
+    margin-bottom: 12px;
 }

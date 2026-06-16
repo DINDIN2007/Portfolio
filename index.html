@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home</title>
   <link href="style.css" rel="stylesheet" type="text/css"/>
   <link href="Ressources/Main Account.gif" rel="icon" type="image/x-icon"/>
@@ -12,101 +12,85 @@
 </head>
 
 <body>
-  <div id="Header" class="backgroundHeader">
-    <img id="Profil_Picture" src="Ressources/Main Account.gif"/>
-    <table><tr>
-      <td class="Menu_Selections">
-        <a href="#About_Me">About Me</a>
-      </td>
-      <td class="Menu_Selections">
-        <a href="#Project_Title">Projects</a>
-      </td>
-      <td class="Menu_Selections">
-        <a href="#Contacts">Connect</a>
-      </td>
-      </tr></table>
-  </div>
+  <nav id="Header" class="backgroundHeader">
+    <img id="Profil_Picture" src="Ressources/Main Account.gif" alt="Profile Picture"/>
+    <ul class="Nav_Menu">
+      <li class="Menu_Selections"><a href="#About_Me">About Me</a></li>
+      <li class="Menu_Selections"><a href="#Project_Title">Projects</a></li>
+      <li class="Menu_Selections"><a href="#Contacts">Connect</a></li>
+    </ul>
+  </nav>
 
   <div id="Welcome_Page">
-    <div id="Title">
-      <div id="typing-anim">
-        Hello World!
-      </div>
+    <div class="Hero_Model">
+      <model-viewer 
+        alt="Blystwatch Dock 3D Model"
+        src="Ressources/HELLO_BLYSTWATCH.glb" 
+        ar
+        shadow-intensity="1" 
+        environment-image="neutral"
+        exposure="0.8"
+        tone-mapping="neutral"
+        camera-controls 
+        touch-action="pan-y"
+        auto-rotate>
+      </model-viewer>
     </div>
-    <div id="Name">I'm <span class="highlight_name">Dinh</span>. 👋</div>
-    <div id="Funny_Sentence">An aspiring Electrical Engineer armed with duct tape, hope and dreams, as well as a PhD in <i>'why is it making that noise' ?</i></div>
+
+    <div class="Hero_Text">
+      <div id="Title">
+        <div id="typing-anim">Hello World!</div>
+      </div>
+      <div id="Name">I'm <span class="highlight_name">Dinh</span>. 👋</div>
+      <div id="Funny_Sentence">An aspiring Electrical Engineer armed with duct tape, hope and dreams, as well as a PhD in <i>'why is it making that noise' ?</i></div>
+    </div>
   </div>
 
-  <h3 id="About_Me">About Me</h3>
-
-  <p id="About_Me_Paragraph">
-    I'm currently a first year electrical engineering UWaterloo student venturing into the world of Hardware Design.
-    My passion revolves around bringing impactful solutions born from creativity and the magic of modern technology.
-    To achieve this, I've been and am actively seeking to refine my skills from architecting digital logic in chip design to building scalable, user-facing applications.
-    My hobbies include disecting old electronics, messing around with system ricing and automation scripts on my linux computer, and mixed martial arts.
-  </p>
+  <!-- ==========================================
+       ABOUT ME SECTION
+  =========================================== -->
+  <div id="About_Me_Section">
+    <div class="About_Me_Image_Container">
+      <!-- Swap this src with your actual image file -->
+      <img src="Ressources/Personal Website About Me.png" alt="A picture of Dinh" id="About_Me_Image">
+    </div>
+    
+    <div class="About_Me_Text">
+      <h3 id="About_Me">About Me</h3>
+      <p id="About_Me_Paragraph">
+        I'm currently a first year electrical engineering UWaterloo student venturing into the world of Hardware Design.
+        My passion revolves around bringing impactful solutions born from creativity and the magic of modern technology.
+        To achieve this, I've been and am actively seeking to refine my skills from architecting digital logic in chip design to building scalable, user-facing applications.
+        My hobbies include dissecting old electronics, messing around with system ricing and automation scripts on my linux computer, and mixed martial arts.
+      </p>
+    </div>
+  </div>
 
   <div id="Projects_Section">
-    <h3 id="Project_Title">Projects</h3>
+    <h3 id="Project_Title">Projects - Hardware</h3>
 
     <div class="Project_Tile">
       <div class="Project_Text">
-        <h4 class="Project_Tile_Title">Blystwatch 🕒</h4>
+        <h4 class="Project_Tile_Title">Blystwatch</h4>
         <p>
-          Blyswatch is one of the first PCB I've designed from scratch and serves as a demo board to showcase development with both the BLYSTL15 (based on the Nordic Semiconductor's nrf54L15) along with the firmware IOComposer AI from I-Syst.inc. 
-          The design includes 6-axis motion LSM6DSV16X, nPM1304 Power Management IC, TMP117 temperature sensor, MAX30102 pulse oximeter and heart-rate sensor, SSD1306 OLED screen and an Ambient Light Sensor bundled in a low-cost 2 layer PCB.
-          It comes along with a dock that seemlessly connects to its exposed copper pads for charging and firmware upload (using a JTag Cortex Debugger).
-          I am currently in the process of ordering the parts for manual assembly and designing its 3d case in Solidworks.
+          Blystwatch is one of the first PCBs I've designed from scratch and serves as a demo board to showcase development with both the BLYSTL15 (based on the Nordic Semiconductor's nrf54L15) along with the firmware IOComposer AI from I-Syst.inc. 
+          The design includes a 6-axis motion LSM6DSV16X, nPM1304 Power Management IC, TMP117 temperature sensor, MAX30102 pulse oximeter and heart-rate sensor, SSD1306 OLED screen and an Ambient Light Sensor bundled in a low-cost 2-layer PCB.
+          It comes along with a dock that seamlessly connects to its exposed copper pads for charging and firmware upload (using a JTag Cortex Debugger).
+          I am currently in the process of ordering the parts for manual assembly and designing its 3D case in Solidworks.
         </p>
-        
         <div class="Project_Links">
           <a href="https://github.com/DINDIN2007/Blystwatch" target="_blank" class="Link_Btn GitHub_Btn">
             <img src="Ressources/github-logo.png" alt="GitHub" class="Btn_Icon">
             <span class="Btn_Text">GitHub</span>
           </a>
         </div>
-
       </div>
-
       <div class="Project_Carousel">
         <div class="Carousel_Viewport">
           <div class="Carousel_Track">
-            <model-viewer 
-              alt="Blystwatch Dock 3D Model"
-              src="Ressources/BLYSTWATCH_With_Components.glb" 
-              ar
-              shadow-intensity="0" 
-              environment-image="neutral"
-              exposure="0.8"
-              tone-mapping="neutral"
-              camera-controls 
-              touch-action="pan-y">
-            </model-viewer>
-            
-            <model-viewer 
-              alt="Blystwatch 3D Model"
-              src="Ressources/BLYSTWATCH.glb" 
-              ar
-              shadow-intensity="0" 
-              environment-image="neutral"
-              exposure="0.8"
-              tone-mapping="neutral"
-              camera-controls 
-              touch-action="pan-y">
-            </model-viewer>
-
-            <model-viewer 
-              alt="Blystwatch Dock 3D Model"
-              src="Ressources/BLYSTWATCH_Dock.glb" 
-              ar
-              shadow-intensity="0" 
-              environment-image="neutral"
-              exposure="0.8"
-              tone-mapping="neutral"
-              camera-controls 
-              touch-action="pan-y">
-            </model-viewer>
-
+            <model-viewer src="Ressources/BLYSTWATCH_With_Components.glb" ar shadow-intensity="0" environment-image="neutral" exposure="0.8" tone-mapping="neutral" camera-controls touch-action="pan-y"></model-viewer>
+            <model-viewer src="Ressources/BLYSTWATCH.glb" ar shadow-intensity="0" environment-image="neutral" exposure="0.8" tone-mapping="neutral" camera-controls touch-action="pan-y"></model-viewer>
+            <model-viewer src="Ressources/BLYSTWATCH_Dock.glb" ar shadow-intensity="0" environment-image="neutral" exposure="0.8" tone-mapping="neutral" camera-controls touch-action="pan-y"></model-viewer>
             <img src="Ressources/Blystwatch_3d_Model_Front.png">
             <img src="Ressources/Blystwatch_3d_Model_Back.png">
             <img src="Ressources/Blystwatch_Watch_PCB.png">
@@ -116,7 +100,6 @@
             <img src="Ressources/Blystwatch_Other_Schematic.png">
           </div>
         </div>
-        
         <div class="Carousel_Controls">
           <button class="Carousel_Btn Prev_Btn">&#10094;</button>
           <div class="Carousel_Dots"></div>
@@ -127,111 +110,36 @@
 
     <div class="Project_Tile">
       <div class="Project_Text">
-        <h4 class="Project_Tile_Title">BlueIO832-Mini App Bundle</h4>
-        <p>The BlueIO832-Mini is a Bluetooth Low Energy microcontrollers based on Nordic Semiconductor's nrf52832 SoC. 
-          It is aimed to provide a intuitive learning experience similar to the Arduino, but with a lower entry level that doesn't require to know on how to code.<br><br>
-          I was fortunate to be able to write the four mobile applications that pair with this microcontroller and that serve as the medium to configure the board's pin functions.
-          Each of these four apps allow the user to effortlessly interface with this external hardware, configure communication protocols, and monitor sensor data without ever  needing to write a single line of embedded firmware.
-        </p>
-        
-        <div class="Project_Links">
-          <a href="https://play.google.com/store/apps/developer?id=I-SYST+inc" target="_blank" class="Link_Btn Play_Btn">
-            <img src="Ressources/playstore-logo.png" alt="Google Play" class="Btn_Icon"> 
-            <span class="Btn_Text">Google Play</span>
-          </a>
-          
-          <a href="https://apps.apple.com/us/developer/i-syst/id1588443075" target="_blank" class="Link_Btn Apple_Btn">
-            <img src="Ressources/apple-logo.png" alt="App Store" class="Btn_Icon">
-            <span class="Btn_Text">iOS Store</span>
-          </a>
-        </div>
-      </div>
-
-      <div class="Project_Carousel">
-        <div class="Carousel_Viewport">
-          <div class="Carousel_Track">
-            <iframe 
-              class="Carousel_Youtube"
-              src="https://www.youtube.com/embed/hfrfdkg6Rws?enablejsapi=1&mute=1&rel=0" 
-              title="BlueIO App Demo" 
-              frameborder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-              referrerpolicy="strict-origin-when-cross-origin" 
-              allowfullscreen>
-            </iframe>
-
-            <img src="Ressources/BlueIO_1.png">
-            <img src="Ressources/BlueIO_2.png">
-            <img src="Ressources/BlueIO_3.png">
-            <img src="Ressources/BlueIO_4.png">
-          </div>
-        </div>
-
-        <div class="Carousel_Controls">
-          <button class="Carousel_Btn Prev_Btn">&#10094;</button>
-          <div class="Carousel_Dots"></div>
-          <button class="Carousel_Btn Next_Btn">&#10095;</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="Project_Tile">
-      <div class="Project_Text">
-        <h4 class="Project_Tile_Title">Mai</h4>
+        <h4 class="Project_Tile_Title">SuperSpeed USB-C Multiplexer (HD3SS3220)</h4>
         <p>
-          Coming soon on both iOS and Google Play, Mai is an mobile application that takes period tracking one step further from the others menstrual apps.
-          Along with its light predictive engine, Mai pairs with the Blystpad, a smart bluetooth heatpad, in order to help reduce period cramps.
-          Mai notifies the user about their upcoming menstruation dates and to use the Blystpad based on the increasingly accurate period predictions based on past user data.
-          To keep the app lightweight, the predictive engine uses a simple K-NN machine learning algorithm paired with a Exponential Moving Average fallback mechanism that dynamically adjusts based on historical user data deviations.
+          This is a project designed to bridge the gap between our FPGA board and modern USB-C devices, offering a great look into how the devices we interact with daily actually work under the hood! A high-speed PCB bridging a Type-C 3.0 connector with the TI <b>HD3SS3220 MUX</b> to a corresponding Type-A connector. Designing this board required navigating strict impedance controls, signal integrity preservation, and complex power topologies.
+          <br><br>
+          I successfully implemented the <b>5W differential spacing rule</b>, constrained via stubs to <b>&lt; 15mils</b>, and resolved significant DC bias derating challenges by transitioning bulk capacitance to Tantalum Polymer packages. 
         </p>
-      </div>
-
-      <div class="Project_Carousel">
-        <div class="Carousel_Viewport">
-          <div class="Carousel_Track">
-            <img src="Ressources/Mai_1.png">
-            <img src="Ressources/Mai_2.png">
-            <img src="Ressources/Mai_3.png">
-            <img src="Ressources/Mai_4.png">
-          </div>
-        </div>
-
-        <div class="Carousel_Controls">
-          <button class="Carousel_Btn Prev_Btn">&#10094;</button>
-          <div class="Carousel_Dots"></div>
-          <button class="Carousel_Btn Next_Btn">&#10095;</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="Project_Tile">
-      <div class="Project_Text">
-        <h4 class="Project_Tile_Title">Thinkerers Desktop Bar</h4>
-        <p>
-          This was a hobby project with the sole purpose of boosting my daily productivity while keeping my desktop user-interface aesthetically pleasing on Arch Linux.
-          By combining Hyprland (a Tiling Window Manager) and Quickshell, I was able to create a personal desktop environment as minimal as possible while still retaining the core essential functions.
-          Along with this setup, I've written various bash scripts linked with Hyprland to pull up my essential applications (Discord, Slack and Notion) as a special workspace, automatically update my packages using Pacman, and display the computer's system activity statistics.
-        </p>
-        
         <div class="Project_Links">
-          <a href="https://github.com/DINDIN2007/Thinkerers-Desktop-Bar/tree/main/showcase_screenshots" target="_blank" class="Link_Btn GitHub_Btn">
+          <a href="https://github.com/uwrealitylabs/HD3SS3220-breakout" target="_blank" class="Link_Btn GitHub_Btn">
             <img src="Ressources/github-logo.png" alt="GitHub" class="Btn_Icon">
             <span class="Btn_Text">GitHub</span>
           </a>
-        </div>
-      </div>
 
+          <button class="Link_Btn Resume_Btn Open_Text_Modal_Btn" data-target="mux-modal">
+            <img src="Ressources/resume-logo.png" alt="Report" class="Btn_Icon">
+            <span class="Btn_Text">More Details</span>
+          </button>
+        </div>
+
+        
+      </div>
       <div class="Project_Carousel">
         <div class="Carousel_Viewport">
           <div class="Carousel_Track">
-            <img src="Ressources/Thinkerer_1.png">
-            <img src="Ressources/Thinkerer_3.png">
-            <img src="Ressources/Thinkerer_4.png">
-            <img src="Ressources/Thinkerer_5.png">
-            <img src="Ressources/Thinkerer_6.png">
+            <model-viewer src="Ressources/USB_3d_Model.glb" ar shadow-intensity="0" environment-image="neutral" exposure="0.8" tone-mapping="neutral" camera-controls touch-action="pan-y"></model-viewer>
+            <img src="Ressources/PCB_Model_HD3SS3220.png" alt="MUX PCB Design"> 
+            <img src="Ressources/HD3SS320_Schematic.png" alt="MUX PCB Design"> 
+            <img src="Ressources/PCB_Routing_HD3SS3220.png" alt="MUX PCB Design"> 
+            <img src="Ressources/PCB_Routing_HD3SS3220_Not_Filled.png" alt="MUX PCB Design"> 
           </div>
         </div>
-
         <div class="Carousel_Controls">
           <button class="Carousel_Btn Prev_Btn">&#10094;</button>
           <div class="Carousel_Dots"></div>
@@ -244,14 +152,12 @@
       <div class="Project_Text">
         <h4 class="Project_Tile_Title">ANC System at a Distance</h4>
         <p>
-          At the end of my first term of university, we were given the chance to create our own projects with the purpose of solving a real world issue that affected a large percentage of the patients in hospitals.
+          At the end of my first term of university, we were given the chance to create our own projects with the purpose of solving a real-world issue that affected a large percentage of patients in hospitals.
           That problem was Hospital Induced Delirium, a severe state of confusion and cognitive impairment that could cause devastating consequences such as memory loss and hallucinations.
-          From going through various research papers, our team narrowed down one of the major causes of this condition, that being the excessive noise levels in modern hospitals.
-          As such, by combining a Raspberry Pi as our main computing unit, two microphones to serve as reference and error adjustment and a speaker, we were able to make a prototype of our solution within the short span of a month.
-          We've learn to leverage the MATLAB audio toolbox along with the RPi Support Package to create an automatic calibration system and a continuous noise cancellation loop that works at long distances.
-          However, with the limited time and material in hand, our device was highly susceptable to noise and reduce the noise by less than 3 dB.
+          From going through various research papers, our team narrowed down one of the major causes of this condition, that being excessive noise levels.
+          By combining a Raspberry Pi as our main computing unit, two microphones to serve as reference and error adjustment, and a speaker, we were able to make a prototype of our solution within the short span of a month.
+          We learned to leverage the MATLAB audio toolbox along with the RPi Support Package to create an automatic calibration system and a continuous noise cancellation loop that works at long distances.
         </p>
-        
         <div class="Project_Links">
           <a href="https://github.com/Ron12777/198" target="_blank" class="Link_Btn GitHub_Btn">
             <img src="Ressources/github-logo.png" alt="GitHub" class="Btn_Icon">
@@ -259,7 +165,6 @@
           </a>
         </div>
       </div>
-
       <div class="Project_Carousel">
         <div class="Carousel_Viewport">
           <div class="Carousel_Track">
@@ -269,18 +174,109 @@
             <img src="Ressources/ANC_4.png">
             <img src="Ressources/ANC_5.png">
             <img src="Ressources/ANC_6.png">
-            <iframe 
-              class="Carousel_Youtube"
-              src="https://www.youtube.com/embed/DmECbFWfYMw?enablejsapi=1&mute=1&rel=0" 
-              title="ANC System at a Distance Demo" 
-              frameborder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-              referrerpolicy="strict-origin-when-cross-origin" 
-              allowfullscreen>
-            </iframe>
+            <iframe class="Carousel_Youtube" src="https://www.youtube.com/embed/DmECbFWfYMw?enablejsapi=1&mute=1&rel=0" title="ANC System at a Distance Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
           </div>
         </div>
+        <div class="Carousel_Controls">
+          <button class="Carousel_Btn Prev_Btn">&#10094;</button>
+          <div class="Carousel_Dots"></div>
+          <button class="Carousel_Btn Next_Btn">&#10095;</button>
+        </div>
+      </div>
+    </div>
 
+    <h3 class="Project_Title">Projects - Software</h3>
+
+    <div class="Project_Tile">
+      <div class="Project_Text">
+        <h4 class="Project_Tile_Title">BlueIO832-Mini App Bundle</h4>
+        <p>
+          The BlueIO832-Mini is a Bluetooth Low Energy microcontroller based on Nordic Semiconductor's nrf52832 SoC. 
+          It is aimed to provide an intuitive learning experience similar to the Arduino, but with a lower entry level that doesn't require knowing how to code.<br><br>
+          I was fortunate to be able to write the four mobile applications that pair with this microcontroller and serve as the medium to configure the board's pin functions.
+          Each of these four apps allows the user to effortlessly interface with external hardware, configure communication protocols, and monitor sensor data without ever needing to write a single line of embedded firmware.
+        </p>
+        <div class="Project_Links">
+          <a href="https://play.google.com/store/apps/developer?id=I-SYST+inc" target="_blank" class="Link_Btn Play_Btn">
+            <img src="Ressources/playstore-logo.png" alt="Google Play" class="Btn_Icon"> 
+            <span class="Btn_Text">Google Play</span>
+          </a>
+          <a href="https://apps.apple.com/us/developer/i-syst/id1588443075" target="_blank" class="Link_Btn Apple_Btn">
+            <img src="Ressources/apple-logo.png" alt="App Store" class="Btn_Icon">
+            <span class="Btn_Text">iOS Store</span>
+          </a>
+        </div>
+      </div>
+      <div class="Project_Carousel">
+        <div class="Carousel_Viewport">
+          <div class="Carousel_Track">
+            <iframe class="Carousel_Youtube" src="https://www.youtube.com/embed/hfrfdkg6Rws?enablejsapi=1&mute=1&rel=0" title="BlueIO App Demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <img src="Ressources/BlueIO_1.png">
+            <img src="Ressources/BlueIO_2.png">
+            <img src="Ressources/BlueIO_3.png">
+            <img src="Ressources/BlueIO_4.png">
+          </div>
+        </div>
+        <div class="Carousel_Controls">
+          <button class="Carousel_Btn Prev_Btn">&#10094;</button>
+          <div class="Carousel_Dots"></div>
+          <button class="Carousel_Btn Next_Btn">&#10095;</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="Project_Tile">
+      <div class="Project_Text">
+        <h4 class="Project_Tile_Title">Mai</h4>
+        <p>
+          Coming soon on both iOS and Google Play, Mai is a mobile application that takes period tracking one step further than other menstrual apps.
+          Along with its light predictive engine, Mai pairs with the Blystpad, a smart bluetooth heatpad, in order to help reduce period cramps.
+          Mai notifies the user about their upcoming menstruation dates and reminds them to use the Blystpad based on increasingly accurate period predictions from past user data.
+          To keep the app lightweight, the predictive engine uses a simple K-NN machine learning algorithm paired with an Exponential Moving Average fallback mechanism that dynamically adjusts based on historical user data deviations.
+        </p>
+      </div>
+      <div class="Project_Carousel">
+        <div class="Carousel_Viewport">
+          <div class="Carousel_Track">
+            <img src="Ressources/Mai_1.png">
+            <img src="Ressources/Mai_2.png">
+            <img src="Ressources/Mai_3.png">
+            <img src="Ressources/Mai_4.png">
+          </div>
+        </div>
+        <div class="Carousel_Controls">
+          <button class="Carousel_Btn Prev_Btn">&#10094;</button>
+          <div class="Carousel_Dots"></div>
+          <button class="Carousel_Btn Next_Btn">&#10095;</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="Project_Tile">
+      <div class="Project_Text">
+        <h4 class="Project_Tile_Title">Thinkerers Desktop Bar</h4>
+        <p>
+          This was a hobby project with the sole purpose of boosting my daily productivity while keeping my desktop user-interface aesthetically pleasing on desktop <b>Linux</b>.
+          By combining Hyprland (a Tiling Window Manager) and Quickshell, I was able to create a personal desktop environment as minimal as possible while still retaining the core essential functions.
+          Along with this setup, I've written various <b>Bash Scripts</b> linked with Hyprland to pull up my essential applications (Discord, Slack, and Notion) as a special workspace, automatically update my packages using Pacman, and display the computer's system activity statistics.
+        </p>
+        <div class="Project_Links">
+          <a href="https://github.com/DINDIN2007/Thinkerers-Desktop-Bar/tree/main/showcase_screenshots" target="_blank" class="Link_Btn GitHub_Btn">
+            <img src="Ressources/github-logo.png" alt="GitHub" class="Btn_Icon">
+            <span class="Btn_Text">GitHub</span>
+          </a>
+        </div>
+      </div>
+      <div class="Project_Carousel">
+        <div class="Carousel_Viewport">
+          <div class="Carousel_Track">
+            <img src="Ressources/Thinkerer_1.png">
+            <img src="Ressources/Thinkerer_3.png">
+            <img src="Ressources/Thinkerer_4.png">
+            <img src="Ressources/Thinkerer_5.png">
+            <img src="Ressources/Thinkerer_6.png">
+          </div>
+        </div>
         <div class="Carousel_Controls">
           <button class="Carousel_Btn Prev_Btn">&#10094;</button>
           <div class="Carousel_Dots"></div>
@@ -294,30 +290,26 @@
         <h4 class="Project_Tile_Title">Continental Buffet</h4>
         <p>
           As part of the final assignment in my grade 12 computer science class, we were given the full liberty of creating our own C++ project.
-          Along with 2 classmates, I've learned to build a video game that leveraged the Axmol Game Engine (a fork from Cocos2d-x).
-          Through Continental Buffet, I was able to combine my understanding of Object Orienting Programming with efficient JSON data handling to deliver a game that introduces you to various dishes across the world.
+          Along with 2 classmates, I learned to build a video game that leveraged the Axmol Game Engine (a fork from Cocos2d-x).
+          Through Continental Buffet, I was able to combine my understanding of Object-Oriented Programming with efficient JSON data handling to deliver a game that introduces you to various dishes across the world.
         </p>
-        
         <div class="Project_Links">
-          <a href="https://github.com/DINDIN2007/Blystwatch" target="_blank" class="Link_Btn GitHub_Btn">
+          <a href="https://github.com/DINDIN2007/Continental-Buffet" target="_blank" class="Link_Btn GitHub_Btn">
             <img src="Ressources/github-logo.png" alt="GitHub" class="Btn_Icon">
             <span class="Btn_Text">GitHub</span>
           </a>
         </div>
       </div>
-
       <div class="Project_Carousel">
         <div class="Carousel_Viewport">
           <div class="Carousel_Track">
             <img src="Ressources/Continental_1.png">
             <img src="Ressources/Continental_2.png">
             <img src="Ressources/Continental_3.png">
-            <img src="Ressources/Continental_3.png">
             <img src="Ressources/Continental_4.png"> 
             <img src="Ressources/Continental_5.png">
           </div>
         </div>
-
         <div class="Carousel_Controls">
           <button class="Carousel_Btn Prev_Btn">&#10094;</button>
           <div class="Carousel_Dots"></div>
@@ -326,16 +318,54 @@
       </div>
     </div>
 
-  </div>
-
-  <div id="Image_Modal" class="modal">
+  </div> <div id="Image_Modal" class="modal">
     <span class="close_modal">&times;</span>
     <img class="modal_content" id="Modal_Img">
   </div>
 
+  <div id="Text_Modal" class="text_modal">
+    <div class="text_modal_content">
+      <span class="close_text_modal">&times;</span>
+      
+      <div id="mux-modal" class="modal_text_body">
+        <h2>Hardware Debugging & Constraint Fixes</h2>
+        <p>A breakdown of the critical design constraints and schematic fixes implemented during the routing of the HD3SS3220 MUX and ME6228 LDO.</p>
+        
+        <h3>1. High-Speed Trace Routing Constraints</h3>
+        <ul>
+          <li><b>Trace Length Matching:</b> Intrapair lengths matched (TX+ to TX-, RX+ to RX-) using serpentines within <b>0.25 inches</b> of the IC breakout. TX and RX pairs do not need to match each other.</li>
+          <li><b>Spacing (5W Rule):</b> Maintained spacing of 5x the trace width between HS signal pairs (e.g., <b>30 mils</b> for 6 mil traces).</li>
+          <li><b>Keep-Outs:</b> Kept <b>&gt;30 mils</b> away from generic signals, <b>&gt;50 mils</b> from clocks/oscillators, and <b>&gt;90 mils</b> from the edge of the GND reference plane. Kept <b>1.5W</b> away from plane voids.</li>
+          <li><b>Via Discontinuity:</b> Restricted via stubs to <b>&lt;15 mils</b> to prevent resonance. Back-drilling is required for any stubs exceeding this length.</li>
+        </ul>
+
+        <h3>2. Signal Integrity & AC Coupling</h3>
+        <ul>
+          <li><b>AC Capacitors:</b> Used 0402 packages symmetrically placed on TX lines <b>ONLY</b> (100nF). Removed redundant RX caps, as the HD3SS3220 utilizes adaptive common-mode voltage tracking (0V - 2V).</li>
+          <li><b>GND Voiding:</b> Voided the GND reference plane by <b>60%</b> directly beneath the SMD pads of the AC caps (spanning at least 2 layers deep) to balance capacitive and inductive discontinuities.</li>
+          <li><b>ESD Protection:</b> Placed flow-through routing diodes immediately at the connector, eliminating sharp corners and tying the GND pin with large vias to handle high-current IEC strikes.</li>
+        </ul>
+
+        <h3>3. Power Topology & Decoupling</h3>
+        <ul>
+          <li><b>LDO (ME6228):</b> Used 1µF 0402 ceramic caps. Due to the severe DC bias derating of tiny 0402 packages under load, these were over-spec'd to a <b>10V/16V rating</b> to ensure they retained true 1µF capacitance. Thermal relief relied on wide copper polygon pours on the GND and VIN/VOUT pins.</li>
+          <li><b>MUX Decoupling:</b> Added local energy reservoirs (100nF) physically touching the VCC33 and VDD5 pins to combat parasitic inductance during rapid SuperSpeed switching transients.</li>
+          <li><b>100µF Bulk Capacitance:</b> Bypassed massive 1210/1812 MLCCs to avoid severe DC bias loss. Replaced with <b>Tantalum Polymer (EIA 1206/1210)</b> or Aluminum Electrolytics, which deliver a true 100µF under a 5V load without derating.</li>
+        </ul>
+
+        <h3>4. Logic & Indicator LED Corrections</h3>
+        <ul>
+          <li><b>Wetting Current:</b> Implemented <b>10kΩ</b> pull-up resistors on ENn_CC and ENn_MUX. This prevents the traces from acting as antennas for 5Gbps EMI noise, while providing just enough "wetting current" (<b>0.5mA</b> on 5V, <b>0.33mA</b> on 3.3V) to punch through oxidation on mechanical DIP switch contacts without wasting power.</li>
+          <li><b>VBUS LED Fix:</b> Separated the VBUS indicator from the <b>900kΩ</b> detection pin. A 900kΩ resistor restricts flow to 3.3µA, starving the LED. Created a parallel path pulling ~<b>3mA</b> through a <b>1kΩ</b> resistor to ground.</li>
+          <li><b>DIR Pin LED Fix:</b> The DIR pin is an <b>Open-Drain</b> output (sinks to ground, outputs no voltage). It is rated to sink roughly <b>1.6mA</b>. Wired the LED directly from the 3.3V rail through a <b>1kΩ resistor</b> into the DIR pin, allowing the chip to safely sink the current to ground when CC2 is detected.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
   <div id="Contacts">
-    <h3 id="Contact_Title">Connect With Me 😁</h3>
-    
+    <h3 id="Contact_Title">Connect With Me 🤝</h3>
     <p id="Contact_Sentence">
       Whether you want to discuss electronic design, collaborate on a new app, or just chat about the latest in tech, my inbox is always open!
     </p>
@@ -345,34 +375,28 @@
         <img src="Ressources/linkedin-logo.png" alt="LinkedIn" class="Btn_Icon">
         <span class="Btn_Text">LinkedIn</span>
       </a>
-
       <a href="mailto:dvluong@uwaterloo.ca" class="Link_Btn Email_Btn">
         <img src="Ressources/email-logo.png" alt="Email" class="Btn_Icon">
         <span class="Btn_Text">Email Me</span>
       </a>
-
       <a href="https://github.com/DINDIN2007" target="_blank" class="Link_Btn GitHub_Btn">
         <img src="Ressources/github-logo.png" alt="GitHub" class="Btn_Icon">
         <span class="Btn_Text">GitHub</span>
       </a>
-
-      <a href="/Ressources/Full_Resume_for_Simplify.pdf" target="_blank" class="Link_Btn Resume_Btn">
+      <a href="Ressources/Full_Resume_for_Simplify.pdf" target="_blank" class="Link_Btn Resume_Btn">
         <img src="Ressources/resume-logo.png" alt="Resume" class="Btn_Icon">
         <span class="Btn_Text">Resume</span>
       </a>
-
     </div>
   </div>
 
   <footer>
     <div class="footer_content">
       <p>&copy; 2026 Dinh Viet Luong. All rights reserved.</p>
-      
       <a href="#top" class="back_to_top">Back to Top &uarr;</a>
     </div>
   </footer>
 
   <script src="script.js"></script>
 </body>
-
 </html>
